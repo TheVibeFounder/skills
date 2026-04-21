@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TheVibeFounder — Build with agents. See how it's done.</title>
-<meta name="description" content="A Forbes 30U30 founder building live with AI agents. Every Sunday, on camera, unedited.">
-<meta property="og:title" content="TheVibeFounder — Build with agents">
-<meta property="og:description" content="A Forbes 30U30 founder building live with AI agents. Every Sunday, on camera, unedited.">
+<title>TheVibeFounder — Aj Yadav · Building with agents</title>
+<meta name="description" content="Serial founder turned solo builder. Shipping with AI at the speed that used to require a team. Forbes 30 Under 30. 25M+ users built. Live every Sunday.">
+<meta property="og:title" content="TheVibeFounder — Aj Yadav">
+<meta property="og:description" content="Serial founder turned solo builder. Shipping with AI at the speed that used to require a team.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#F0EDE8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --dark:#0E0E0E;--cream:#F0EDE8;--amber:#F09A1A;
-  --ink:#1A1A1A;--mid:#444;--soft:#666;--meta:#888;
+  --ink:#1A1A1A;--mid:#3B3B3B;--soft:#666;--meta:#888;
   --rule:rgba(10,10,10,0.08);
   --rule-strong:rgba(10,10,10,0.14);
   --surface:#FFFFFF;
@@ -25,75 +25,145 @@
 }
 html,body{background:var(--cream);color:var(--ink);font-family:var(--mono);font-weight:400;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
 
-.nav{display:flex;justify-content:space-between;align-items:center;padding:32px 48px;border-bottom:0.5px solid var(--rule);}
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:32px 48px;border-bottom:0.5px solid var(--rule);position:relative;}
 .nav-l{font-family:var(--serif);font-size:22px;letter-spacing:-0.025em;line-height:1;color:var(--ink);}
 .nav-l .f{opacity:0.22;}
 .nav-r{font-size:10px;letter-spacing:0.18em;color:var(--soft);text-transform:uppercase;}
 .nav-r a{margin-left:24px;}
 .nav-r a:hover{color:var(--amber);}
+.status{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:8px;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--amber);display:inline-block;}
+@media (max-width:900px){.status{display:none;}}
 
-.hero{padding:96px 48px 48px;max-width:1200px;margin:0 auto;}
-.eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:32px;}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
-h1.wm{font-family:var(--serif);font-size:128px;line-height:0.88;letter-spacing:-0.025em;color:var(--ink);margin-bottom:48px;}
-h1.wm .f{opacity:0.22;}
-h1.wm .r{color:var(--ink);}
-.lede{font-size:15px;line-height:1.9;color:var(--mid);max-width:56ch;margin-bottom:48px;}
-.lede em{font-style:italic;color:var(--amber);}
-.rule{height:0.5px;background:var(--rule);margin:0;}
+/* HERO */
+.hero{padding:96px 0 64px;}
+.eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:40px;}
+.attrib{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-bottom:20px;display:flex;gap:10px;align-items:center;}
+.attrib .div{display:inline-block;width:20px;height:0.5px;background:var(--rule-strong);}
+h1.thesis{font-family:var(--serif);font-size:84px;line-height:0.98;letter-spacing:-0.025em;color:var(--ink);margin-bottom:40px;max-width:20ch;}
+h1.thesis .it{font-style:italic;color:var(--amber);}
+.lede{font-family:var(--mono);font-size:17px;line-height:1.6;color:var(--mid);max-width:64ch;margin-bottom:48px;}
 
-.cards{padding:72px 48px 96px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
-.card{background:var(--surface);border:0.5px solid var(--rule);padding:40px;display:flex;flex-direction:column;min-height:280px;transition:border-color 0.2s;color:var(--ink);}
-.card:hover{border-color:var(--rule-strong);}
-.card .kicker{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-.card h2{font-family:var(--serif);font-size:32px;line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:16px;}
-.card p{font-size:13px;line-height:1.9;color:var(--mid);margin-bottom:28px;flex-grow:1;}
-.card-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;background:var(--amber);color:#0E0E0E;align-self:flex-start;padding:14px 20px;border:none;transition:opacity 0.15s,gap 0.15s;}
-.card-cta:hover{opacity:0.92;gap:20px;}
-.card-cta .arr{font-family:var(--serif);font-size:14px;line-height:1;}
+/* MANIFESTO — flush-left amber rule like a pull-quote block */
+.manifesto{padding:48px 0 80px;}
+.manifesto .body{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;max-width:920px;}
+.manifesto .rule-v{width:3px;background:var(--amber);align-self:stretch;}
+.manifesto .label{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;}
+.manifesto p{font-family:var(--mono);font-size:15px;line-height:1.85;color:var(--ink);margin-bottom:18px;}
+.manifesto p:last-child{margin-bottom:0;color:var(--mid);}
 
-.session{max-width:1200px;margin:0 auto;padding:0 48px 96px;}
-.session-row{background:var(--dark);color:rgba(255,255,255,0.85);padding:48px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;}
-.session-row .k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.session-row h3{font-family:var(--serif);font-size:36px;line-height:1.05;letter-spacing:-0.02em;color:white;}
-.session-row h3 .it{font-style:italic;color:var(--amber);}
-.session-row p{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.9;margin-top:12px;max-width:48ch;}
-.session-row .when{font-family:var(--serif);font-size:22px;color:white;letter-spacing:-0.015em;text-align:right;}
-.session-row .when small{display:block;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.16em;text-transform:uppercase;margin-top:6px;}
+.rule{height:0.5px;background:var(--rule);}
 
-.foot{padding:40px 48px;border-top:0.5px solid var(--rule);display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);background:var(--cream);}
-.foot a:hover{color:var(--amber);}
+/* STATS */
+.stats{padding:80px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.stat{padding:40px;background:var(--surface);border:0.5px solid var(--rule);}
+.stat .num{font-family:var(--serif);font-size:88px;line-height:0.9;letter-spacing:-0.03em;color:var(--ink);margin-bottom:20px;}
+.stat .num .plus{color:var(--amber);font-style:italic;}
+.stat .cap{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--mid);}
+.stat .k{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);margin-bottom:8px;display:block;}
+
+/* WHAT I SEE */
+.see{padding:80px 0 48px;}
+.see .label{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;}
+.see .quote{font-family:var(--serif);font-style:italic;font-size:36px;line-height:1.18;letter-spacing:-0.015em;color:var(--ink);max-width:28ch;margin-bottom:40px;}
+.see p{font-family:var(--mono);font-size:15px;line-height:1.85;color:var(--mid);max-width:68ch;margin-bottom:18px;}
+.see p:last-child{color:var(--ink);}
+
+/* TWO COLUMN */
+.two{padding:48px 0 96px;display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.col{padding:40px;background:var(--surface);border:0.5px solid var(--rule);}
+.col .k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.col p{font-family:var(--mono);font-size:14px;line-height:1.85;color:var(--mid);}
+
+/* DARK SESSION BAND */
+.session-wrap{background:var(--dark);color:rgba(255,255,255,0.85);}
+.session{padding:96px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;}
+.session .eyebrow-d{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:32px;}
+.session h2{font-family:var(--serif);font-size:56px;line-height:0.98;letter-spacing:-0.025em;color:white;margin-bottom:32px;}
+.session h2 .it{font-style:italic;color:var(--amber);}
+.session p{font-family:var(--mono);font-size:14px;line-height:1.85;color:rgba(255,255,255,0.6);margin-bottom:40px;max-width:52ch;}
+.session .cta{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;background:var(--amber);color:#0E0E0E;padding:16px 24px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;min-width:260px;transition:opacity 0.15s,gap 0.15s;}
+.session .cta:hover{opacity:0.92;gap:20px;}
+.session .cta .arr{font-family:var(--serif);font-size:16px;}
+.when-card{border:0.5px solid rgba(255,255,255,0.14);padding:32px;}
+.when-card .k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px;}
+.when-card .n{font-family:var(--serif);font-size:80px;line-height:0.9;letter-spacing:-0.03em;color:white;margin-bottom:4px;}
+.when-card .n .it{font-style:italic;color:var(--amber);}
+.when-card .lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.when-card .meta{margin-top:28px;padding-top:20px;border-top:0.5px solid rgba(255,255,255,0.1);font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.7);line-height:1.8;}
+.when-card .meta strong{color:white;font-weight:400;font-family:var(--serif);font-size:18px;letter-spacing:-0.01em;}
+
+/* CARDS (skills / letter / social) */
+.channels{padding:96px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.ch-card{background:var(--surface);border:0.5px solid var(--rule);padding:40px;display:flex;flex-direction:column;min-height:280px;color:var(--ink);transition:border-color 0.2s;}
+.ch-card:hover{border-color:var(--rule-strong);}
+.ch-card .k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.ch-card h3{font-family:var(--serif);font-size:30px;line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:14px;}
+.ch-card p{font-family:var(--mono);font-size:13px;line-height:1.85;color:var(--mid);margin-bottom:28px;flex-grow:1;}
+.ch-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;background:var(--amber);color:#0E0E0E;align-self:flex-start;padding:14px 20px;transition:opacity 0.15s,gap 0.15s;}
+.ch-card:hover .ch-cta{opacity:0.92;gap:20px;}
+.ch-cta .arr{font-family:var(--serif);font-size:14px;}
+
+/* FOOTER SOCIALS */
+.footer-band{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-grid{padding:72px 48px 32px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 3fr;gap:80px;}
+.foot-wm{font-family:var(--serif);font-size:48px;letter-spacing:-0.025em;line-height:0.9;color:var(--ink);margin-bottom:24px;}
+.foot-wm .f{opacity:0.22;}
+.foot-about{font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--mid);max-width:40ch;}
+.socials{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}
+.social{background:var(--surface);border:0.5px solid var(--rule);padding:20px 16px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.15s;}
+.social:hover{border-color:var(--amber);}
+.social .s-k{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--soft);}
+.social .s-v{font-family:var(--serif);font-size:16px;color:var(--ink);letter-spacing:-0.01em;}
+.social:hover .s-v{color:var(--amber);}
+
+.foot-bottom{padding:28px 48px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);border-top:0.5px solid var(--rule);}
+.foot-bottom .credit{color:var(--ink);}
 
 @media (max-width:900px){
-  .nav{padding:20px 24px;}
+  .container,.nav,.session,.foot-grid,.foot-bottom{padding-left:24px;padding-right:24px;}
+  .nav{padding-top:20px;padding-bottom:20px;}
   .nav-r a{margin-left:16px;}
-  .hero{padding:56px 24px 32px;}
-  h1.wm{font-size:64px;line-height:0.92;}
-  .lede{font-size:14px;}
-  .cards{padding:48px 24px 64px;grid-template-columns:1fr;}
-  .card{padding:28px;min-height:0;}
-  .session{padding:0 24px 64px;}
-  .session-row{padding:32px;grid-template-columns:1fr;gap:24px;}
-  .session-row .when{text-align:left;}
-  .foot{padding:28px 24px;flex-direction:column;gap:12px;}
+  .hero{padding:56px 0 40px;}
+  h1.thesis{font-size:44px;line-height:1.02;}
+  .lede{font-size:15px;}
+  .manifesto{padding:32px 0 56px;}
+  .manifesto .body{grid-template-columns:3px 1fr;gap:24px;}
+  .manifesto p{font-size:14px;}
+  .stats{padding:56px 0;grid-template-columns:1fr;}
+  .stat{padding:32px;}
+  .stat .num{font-size:64px;}
+  .see{padding:56px 0 32px;}
+  .see .quote{font-size:26px;}
+  .two{padding:32px 0 64px;grid-template-columns:1fr;}
+  .col{padding:28px;}
+  .session{padding:56px 24px;grid-template-columns:1fr;gap:40px;}
+  .session h2{font-size:36px;}
+  .when-card .n{font-size:56px;}
+  .channels{padding:56px 0;grid-template-columns:1fr;}
+  .ch-card{padding:28px;min-height:0;}
+  .foot-grid{padding:48px 24px 24px;grid-template-columns:1fr;gap:40px;}
+  .foot-wm{font-size:36px;}
+  .socials{grid-template-columns:1fr 1fr;}
+  .foot-bottom{padding:20px 24px;flex-direction:column;gap:12px;}
 }
 @media (max-width:480px){
   .nav{padding:14px 20px;}
   .nav-l{font-size:18px;}
   .nav-r{font-size:9px;letter-spacing:0.14em;}
   .nav-r a{margin-left:12px;}
-  .hero{padding:40px 20px 24px;}
-  h1.wm{font-size:48px;}
-  .eyebrow{font-size:9px;margin-bottom:24px;}
-  .lede{font-size:13px;margin-bottom:32px;}
-  .cards{padding:40px 20px 48px;}
-  .card{padding:24px;}
-  .card h2{font-size:26px;}
-  .session{padding:0 20px 48px;}
-  .session-row{padding:24px;}
-  .session-row h3{font-size:26px;}
-  .foot{padding:24px 20px;font-size:9px;}
+  .container,.session,.foot-grid,.foot-bottom{padding-left:20px;padding-right:20px;}
+  h1.thesis{font-size:36px;letter-spacing:-0.02em;}
+  .lede{font-size:14px;}
+  .stat .num{font-size:52px;}
+  .see .quote{font-size:22px;}
+  .session h2{font-size:30px;}
+  .when-card .n{font-size:44px;}
+  .ch-card h3{font-size:24px;}
+  .foot-wm{font-size:30px;}
 }
 </style>
 </head>
@@ -101,6 +171,7 @@ h1.wm .r{color:var(--ink);}
 
 <nav class="nav">
   <a href="/" class="nav-l"><span class="f">The</span>Vibe<span class="f">Founder</span></a>
+  <div class="status"><span class="dot"></span>System active · Session 29 · Sunday 21:00 IST</div>
   <div class="nav-r">
     <a href="/skills/">Skills</a>
     <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a>
@@ -108,54 +179,169 @@ h1.wm .r{color:var(--ink);}
   </div>
 </nav>
 
-<header class="hero">
-  <div class="eyebrow"><span class="dot"></span>System active · Build Live · Sunday 21:00 IST</div>
-  <h1 class="wm"><span class="f">The</span><br><span class="r">Vibe</span><br><span class="f">Founder</span></h1>
-  <p class="lede">A Forbes 30 Under 30 founder who scaled Simplified AI to 20M users — now building live on camera, <em>unedited</em>, every Sunday. One founder running a company with agents. You see the tools, the configs, the decisions, and what broke.</p>
+<!-- HERO -->
+<header class="container">
+  <div class="hero">
+    <div class="eyebrow"><span class="dot"></span>Aj Yadav · Founder · Builder · Community</div>
+    <h1 class="thesis">AI is making early hiring a <span class="it">structural disadvantage.</span></h1>
+    <p class="lede">Serial founder turned solo builder, now shipping with AI at a speed that used to require a team. Every Sunday I run a Build Live session — cameras on, tools visible, unedited. You see what ships, what breaks, and the exact moves that still matter.</p>
+    <div class="attrib">
+      <span>Forbes 30 Under 30 · Consumer · 2017</span>
+      <span class="div"></span>
+      <span>Simplified AI · 20M users</span>
+      <span class="div"></span>
+      <span>OpenClaw · ClawShip</span>
+    </div>
+  </div>
 </header>
 
 <div class="rule"></div>
 
-<section class="cards">
-
-  <a class="card" href="/skills/">
-    <div class="kicker"><span class="dot"></span>Skills · 01 live</div>
-    <h2>Claude Code skills that ship.</h2>
-    <p>Drop-in skills built from real sessions. No theory. Just the exact files I use on camera — packaged so you can run them tonight.</p>
-    <span class="card-cta"><span>Browse skills</span><span class="arr">→</span></span>
-  </a>
-
-  <a class="card" href="https://letter.thevibefounder.com" target="_blank" rel="noopener">
-    <div class="kicker"><span class="dot"></span>Letter</div>
-    <h2>Session notes, configs, what broke.</h2>
-    <p>One email when a new skill drops. Session recaps. Real numbers. Zero spam. Unsubscribe anytime.</p>
-    <span class="card-cta"><span>Read the letter</span><span class="arr">→</span></span>
-  </a>
-
-  <a class="card" href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">
-    <div class="kicker"><span class="dot"></span>Instagram</div>
-    <h2>Build drops, news drops, daily signal.</h2>
-    <p>The feed where the sessions land. Tool launches, shipped skills, carousels that track the shift in real time.</p>
-    <span class="card-cta"><span>Follow @thevibefounder</span><span class="arr">→</span></span>
-  </a>
-
-</section>
-
-<section class="session">
-  <div class="session-row">
-    <div>
-      <div class="k"><span class="dot"></span>Next build live</div>
-      <h3>Session <span class="it">30</span> · live on camera.</h3>
-      <p>I build something real, from nothing, in a single session. You see every click, every prompt, every config. Come watch, or come build.</p>
+<!-- MANIFESTO -->
+<section class="container">
+  <div class="manifesto">
+    <div class="body">
+      <div class="rule-v"></div>
+      <div>
+        <div class="label">What I believe</div>
+        <p>For years, scale meant hiring. AI is compressing execution so aggressively that coordination is becoming the new tax. The teams that add headcount too early will lose to smaller operators with stronger judgment, sharper taste, and faster feedback loops.</p>
+        <p>But the hopeful part: when execution gets cheaper, more people get to act on what they know. More builders can turn expertise into products without building an institution around themselves first. That changes who gets to build, who gets to win, and how quickly ideas can become real.</p>
+      </div>
     </div>
-    <div class="when">Sunday<br>21:00 IST<small>· Next session</small></div>
   </div>
 </section>
 
-<footer class="foot">
-  <div>© 2026 TheVibeFounder</div>
-  <div><a href="/skills/">Skills</a> &nbsp;·&nbsp; <a href="https://letter.thevibefounder.com">Letter</a> &nbsp;·&nbsp; <a href="https://instagram.com/thevibefounder">Instagram</a> &nbsp;·&nbsp; <a href="https://x.com/thevibefounder">X</a></div>
-</footer>
+<div class="rule"></div>
+
+<!-- STATS -->
+<section class="container">
+  <div class="stats">
+    <div class="stat">
+      <div class="k">Users reached</div>
+      <div class="num">25M<span class="plus">+</span></div>
+      <div class="cap">Across companies built the traditional way.</div>
+    </div>
+    <div class="stat">
+      <div class="k">Monthly views</div>
+      <div class="num">15–20M</div>
+      <div class="cap">Sharing new tools, behind-the-scenes builds, and workflows I actually use.</div>
+    </div>
+    <div class="stat">
+      <div class="k">Build Live sessions</div>
+      <div class="num">28</div>
+      <div class="cap">In 12 months. Showing how AI works in real time, unedited.</div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- WHAT I SEE -->
+<section class="container">
+  <div class="see">
+    <div class="label" style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;">What I see</div>
+    <div class="quote">The real question is no longer what AI can do. It's which parts of a company were only valuable because execution used to be expensive.</div>
+    <p>I've operated on both sides of this shift — teams, funding, long product cycles, and now an operating model where AI compresses months into days. Every week I run live build sessions testing tools and shipping systems I use in my own businesses, in public. People show up to watch the process, not the pitch.</p>
+    <p>What I share is not a prediction. It's a view from inside a transition already underway.</p>
+  </div>
+</section>
+
+<!-- TWO COLUMN -->
+<section class="container">
+  <div class="two">
+    <div class="col">
+      <div class="k"><span class="dot"></span>What I see that others don't</div>
+      <p>The next breakout companies will be smaller for longer. Expertise paired with AI will outperform organizations built around coordination. Pure coordination as a value layer is shrinking. Many companies will not lose because they lacked talent or capital, but because their structure became the bottleneck.</p>
+    </div>
+    <div class="col">
+      <div class="k"><span class="dot"></span>What I help people think about</div>
+      <p>Where AI replaces headcount. Where it amplifies exceptional people rather than replacing them. How to tell when a business category is being structurally compressed. And just as importantly — when staying small is the strategic advantage, and when it's time to build a team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DARK SESSION BAND -->
+<div class="session-wrap">
+  <section class="session">
+    <div>
+      <div class="eyebrow-d"><span class="dot"></span>Build Live · Every Sunday</div>
+      <h2>Watch the next one <span class="it">live</span>.</h2>
+      <p>I pick a real problem, pick the tools, ship something in one sitting. You see every click, every prompt, every config. Come watch, or come build alongside.</p>
+      <a class="cta" href="https://letter.thevibefounder.com" target="_blank" rel="noopener">
+        <span>Get the session link</span><span class="arr">→</span>
+      </a>
+    </div>
+    <div class="when-card">
+      <div class="k">Next session</div>
+      <div class="n"><span class="it">29</span></div>
+      <div class="lbl">Session</div>
+      <div class="meta">
+        <strong>Sunday · 21:00 IST</strong><br>
+        Live on camera. Unedited. Questions answered in chat.
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CHANNEL CARDS -->
+<section class="container">
+  <div class="channels">
+    <a class="ch-card" href="/skills/">
+      <div class="k"><span class="dot"></span>Skills · 01 live</div>
+      <h3>Claude Code skills that ship.</h3>
+      <p>Drop-in skills from real sessions. No theory — just the files I use on camera, packaged to run tonight.</p>
+      <span class="ch-cta"><span>Browse skills</span><span class="arr">→</span></span>
+    </a>
+    <a class="ch-card" href="https://letter.thevibefounder.com" target="_blank" rel="noopener">
+      <div class="k"><span class="dot"></span>The Letter</div>
+      <h3>Session notes, configs, what broke.</h3>
+      <p>One email when a new skill drops. Real numbers, real tools. Zero spam. Unsubscribe anytime.</p>
+      <span class="ch-cta"><span>Read the letter</span><span class="arr">→</span></span>
+    </a>
+    <a class="ch-card" href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">
+      <div class="k"><span class="dot"></span>Daily signal</div>
+      <h3>Build drops, news drops, hot takes.</h3>
+      <p>The feed where sessions land and new tools go public. Follow for the daily signal between Sundays.</p>
+      <span class="ch-cta"><span>Follow @thevibefounder</span><span class="arr">→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-band">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-wm"><span class="f">The</span>Vibe<span class="f">Founder</span></div>
+      <p class="foot-about">One founder running a company with agents. Watch the process, not the pitch. Live every Sunday.</p>
+    </div>
+    <div class="socials">
+      <a class="social" href="https://letter.thevibefounder.com" target="_blank" rel="noopener">
+        <span class="s-k">Substack</span>
+        <span class="s-v">letter.thevibefounder.com</span>
+      </a>
+      <a class="social" href="https://twitter.com/thevibefounder" target="_blank" rel="noopener">
+        <span class="s-k">Twitter · X</span>
+        <span class="s-v">@thevibefounder</span>
+      </a>
+      <a class="social" href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">
+        <span class="s-k">Instagram</span>
+        <span class="s-v">@thevibefounder</span>
+      </a>
+      <a class="social" href="https://youtube.com/@thevibefounder" target="_blank" rel="noopener">
+        <span class="s-k">YouTube</span>
+        <span class="s-v">@thevibefounder</span>
+      </a>
+      <a class="social" href="https://linkedin.com/in/yadavajay" target="_blank" rel="noopener">
+        <span class="s-k">LinkedIn</span>
+        <span class="s-v">in/yadavajay</span>
+      </a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 Aj Yadav · TheVibeFounder</div>
+    <div class="credit">Forbes 30 Under 30 · Consumer · 2017</div>
+  </div>
+</div>
 
 </body>
 </html>
