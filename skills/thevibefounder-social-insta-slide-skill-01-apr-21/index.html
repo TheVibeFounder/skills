@@ -74,10 +74,13 @@ code{font-family:var(--mono);background:rgba(240,154,26,0.1);color:#8A5200;paddi
 .field input::placeholder{color:rgba(255,255,255,0.3);}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:10px;color:rgba(255,255,255,0.5);line-height:1.7;margin:8px 0 24px;}
 .consent input{margin-top:2px;accent-color:var(--amber);}
-.btn{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--amber);color:#0E0E0E;border:none;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:18px 20px;cursor:pointer;transition:opacity 0.15s;}
+.btn{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--amber);color:#0E0E0E;border:none;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:18px 20px;cursor:pointer;transition:opacity 0.15s;text-decoration:none;}
 .btn:hover{opacity:0.92;}
 .btn[disabled]{opacity:0.5;cursor:not-allowed;}
 .btn .arr{font-family:var(--serif);}
+.btn-ghost{display:flex;width:100%;justify-content:space-between;align-items:center;background:transparent;color:rgba(255,255,255,0.85);border:0.5px solid rgba(255,255,255,0.2);font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:16px 20px;cursor:pointer;transition:border-color 0.15s,color 0.15s;text-decoration:none;margin-top:12px;}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber);}
+.btn-ghost .arr{font-family:var(--serif);}
 .meta-row{margin-top:20px;padding-top:20px;border-top:0.5px solid rgba(255,255,255,0.08);display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;}
 .meta-row strong{color:white;font-weight:400;display:block;margin-top:4px;font-family:var(--serif);font-size:16px;text-transform:none;letter-spacing:-0.01em;}
 .status{margin-top:20px;font-size:11px;line-height:1.7;min-height:1.2em;}
@@ -202,7 +205,7 @@ code{font-family:var(--mono);background:rgba(240,154,26,0.1);color:#8A5200;paddi
 
     <div class="sec">How to install</div>
     <ol class="steps">
-      <li><span class="n">01</span><span class="s">Enter your email on the right and download the <code>.zip</code>.</span></li>
+      <li><span class="n">01</span><span class="s">Click <strong style="color:var(--ink);">Download skill</strong> on the right (ZIP from GitHub).</span></li>
       <li><span class="n">02</span><span class="s">Unzip into <code>.claude/skills/thevibefounder-social-insta-slide-skill-01-apr-21/</code> in your project.</span></li>
       <li><span class="n">03</span><span class="s">Install the renderer: <code>npm install</code> + <code>npx playwright install chromium</code>.</span></li>
       <li><span class="n">04</span><span class="s">In Claude Code, ask: <em style="color:var(--ink);">"make a news drop about X"</em> — SKILL.md carries the full agent playbook; the skill auto-triggers.</span></li>
@@ -211,23 +214,15 @@ code{font-family:var(--mono);background:rgba(240,154,26,0.1);color:#8A5200;paddi
   </div>
 
   <aside class="dl">
-    <div class="dl-tag"><span class="dot"></span>Free download</div>
+    <div class="dl-tag"><span class="dot"></span>Free · MIT · GitHub</div>
     <h3>Get the skill.</h3>
-    <p class="sub">Drop your email. We email the link and ping you when new skills ship. No spam. Unsubscribe anytime.</p>
-    <form id="dl-form" novalidate>
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@domain.com" autocomplete="email" required>
-      </div>
-      <label class="consent">
-        <input type="checkbox" id="consent" checked>
-        <span>Email me future skills + session notes. I can unsubscribe anytime.</span>
-      </label>
-      <button type="submit" class="btn" id="submit-btn">
-        <span>Download skill</span><span class="arr">→</span>
-      </button>
-      <div class="status" id="status" aria-live="polite"></div>
-    </form>
+    <p class="sub">Open source on GitHub. Grab the zip, or browse the source files — SKILL.md, boilerplate.html, README.</p>
+    <a class="btn" href="https://github.com/TheVibeFounder/skills/raw/main/skills/thevibefounder-social-insta-slide-skill-01-apr-21/thevibefounder-social-insta-slide-skill-01-apr-21.zip" download>
+      <span>Download skill</span><span class="arr">→</span>
+    </a>
+    <a class="btn-ghost" href="https://github.com/TheVibeFounder/skills/tree/main/skills/thevibefounder-social-insta-slide-skill-01-apr-21" target="_blank" rel="noopener">
+      <span>View on GitHub</span><span class="arr">↗</span>
+    </a>
     <div class="meta-row">
       <div>Version<strong>2026.04.21</strong></div>
       <div>License<strong>MIT</strong></div>
@@ -259,38 +254,6 @@ code{font-family:var(--mono);background:rgba(240,154,26,0.1);color:#8A5200;paddi
 </footer>
 
 <script>
-(function(){
-  var form = document.getElementById('dl-form');
-  var emailEl = document.getElementById('email');
-  var btn = document.getElementById('submit-btn');
-  var status = document.getElementById('status');
-  var SKILL_ID = 'thevibefounder-social-insta-slide-skill-01-apr-21';
-  var ENDPOINT = '/api/skill-download';
-  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    status.className = 'status';
-    status.textContent = '';
-    var email = (emailEl.value || '').trim();
-    var consent = document.getElementById('consent').checked;
-    if(!isEmail(email)){ status.className='status err'; status.textContent='Enter a valid email.'; return; }
-    btn.disabled = true; btn.querySelector('span').textContent = 'Preparing download…';
-    try {
-      var res = await fetch(ENDPOINT, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,skill:SKILL_ID,consent:consent})});
-      if(!res.ok) throw new Error('Request failed');
-      var data = await res.json();
-      if(!data.url) throw new Error('No download URL');
-      status.className='status ok'; status.textContent='Check your email. Download starting…';
-      var a = document.createElement('a');
-      a.href = data.url; a.download = '';
-      document.body.appendChild(a); a.click(); a.remove();
-    } catch(err) {
-      status.className='status err'; status.textContent='Something broke. Email ajay@thevibefounder.com and I will send it directly.';
-    } finally {
-      btn.disabled = false; btn.querySelector('span').textContent = 'Download skill';
-    }
-  });
-})();
 (function(){
   var form = document.getElementById('sub-form');
   var email = document.getElementById('sub-email');

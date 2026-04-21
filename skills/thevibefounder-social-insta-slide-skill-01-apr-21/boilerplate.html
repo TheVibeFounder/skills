@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+    THE SHIFT CAROUSEL — BOILERPLATE
+    10-slide narrative format for Instagram carousels.
+
+    Built by:   Aj Yadav  (@thevibefounder)
+    Brand:      TheVibeFounder
+    Site:       https://thevibefounder.com
+    Version:    2026.04.21
+
+    Free to use, remix, and adapt.
+    Attribution appreciated — tag @thevibefounder if you ship it.
+
+    Pairs with: TVF-SHIFT-CAROUSEL-SKILL-v04_21_2026.md
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Aj Yadav (@thevibefounder)">
+<meta name="description" content="TVF Shift Carousel boilerplate — 10-slide Instagram format by @thevibefounder. Free to use with attribution.">
+<meta name="designed-by" content="TheVibeFounder — thevibefounder.com">
+<title>TVF Shift Carousel — Boilerplate</title>
+<style>
+  /* =========================================================
+     TVF SHIFT CAROUSEL — BOILERPLATE
+     Do not edit CSS per-slide. Swap content via str_replace.
+     Canvas: 1440 × 1800px. Font: Space Mono.
+     ========================================================= */
+
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2a2a2a;
+    font-family: 'Space Mono', monospace;
+    overflow: hidden;
+  }
+
+  .slide-wrapper { width: 1440px; height: 1800px; transform-origin: top center; }
+
+  .slide {
+    width: 1440px;
+    height: 1800px;
+    background: #F0EDE8;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 140px 70px 140px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ---------- DARK SLIDE VARIANT (signature gradient wash) ---------- */
+  .slide.dark-slide {
+    background:
+      radial-gradient(ellipse at 85% 100%, rgba(69,202,159,0.08) 0%, transparent 55%),
+      #0D0D0D;
+    color: #F0EDE8;
+  }
+
+  /* ---------- CORNER CARTOUCHE BRACKETS (viewfinder frame) ---------- */
+  .cartouche {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.9;
+  }
+  .cartouche::before, .cartouche::after {
+    content: '';
+    position: absolute;
+    background: #45CA9F;
+    opacity: 0.35;
+  }
+  /* horizontal tick */
+  .cartouche::before { width: 60px; height: 2px; }
+  /* vertical tick */
+  .cartouche::after  { width: 2px;  height: 60px; }
+
+  .cartouche.tl { top: 40px;    left: 40px;   }
+  .cartouche.tl::before { top: 0; left: 0; }
+  .cartouche.tl::after  { top: 0; left: 0; }
+
+  .cartouche.tr { top: 40px;    right: 40px;  }
+  .cartouche.tr::before { top: 0; right: 0; }
+  .cartouche.tr::after  { top: 0; right: 0; }
+
+  .cartouche.bl { bottom: 40px; left: 40px;   }
+  .cartouche.bl::before { bottom: 0; left: 0; }
+  .cartouche.bl::after  { bottom: 0; left: 0; }
+
+  .cartouche.br { bottom: 40px; right: 40px;  }
+  .cartouche.br::before { bottom: 0; right: 0; }
+  .cartouche.br::after  { bottom: 0; right: 0; }
+
+  /* ---------- FIELD-NOTE HEADER ---------- */
+  .field-note {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 60px;
+    font-family: 'Space Mono', monospace;
+  }
+  .field-note .fn-line-1 {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 4px;
+  }
+  .slide.dark-slide .field-note .fn-line-1 { color: #888; }
+  .field-note .fn-line-2 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #bbb;
+  }
+  .slide.dark-slide .field-note .fn-line-2 { color: #666; }
+
+  /* ---------- MARGINALIA RAIL (left gutter) ---------- */
+  .rail {
+    position: absolute;
+    top: 340px;
+    left: 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+  }
+  .rail-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #45CA9F;
+    margin-bottom: 10px;
+  }
+  .rail-rule {
+    width: 3px;
+    height: 240px;
+    background: #45CA9F;
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
+  .slide.dark-slide .rail-rule { opacity: 0.5; }
+  .rail-label {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #45CA9F;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  /* ---------- CONTENT COLUMN ---------- */
+  .content {
+    position: relative;
+    z-index: 2;
+    margin-left: 60px; /* room for rail */
+    max-width: 1080px;
+  }
+
+  /* ---------- HEADLINE ---------- */
+  .headline {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 104px;
+    line-height: 1.12;
+    letter-spacing: -2px;
+    color: #0D0D0D;
+    margin-bottom: 32px;
+  }
+  .slide.dark-slide .headline { color: #F0EDE8; }
+
+  /* Ghost-trail italic */
+  .headline em {
+    font-style: italic;
+    position: relative;
+    display: inline-block;
+  }
+  .headline em::before {
+    content: attr(data-ghost);
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    color: rgba(69,202,159,0.18);
+    font-style: italic;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .slide.dark-slide .headline em::before { color: rgba(69,202,159,0.25); }
+
+  /* Spotlight bracket word */
+  .spotlight {
+    position: relative;
+    display: inline-block;
+    padding: 0 14px;
+    color: #0D0D0D;
+  }
+  .slide.dark-slide .spotlight { color: #F0EDE8; }
+  .spotlight::before, .spotlight::after {
+    content: '';
+    position: absolute;
+    width: 22px; height: 22px;
+    border: 3px solid #45CA9F;
+    opacity: 0.75;
+  }
+  .spotlight::before {
+    top: -18px; left: -4px;
+    border-right: none;
+    border-bottom: none;
+  }
+  .spotlight::after {
+    bottom: -18px; right: -4px;
+    border-left: none;
+    border-top: none;
+  }
+
+  /* ---------- SUBHEAD / BODY ---------- */
+  .subhead {
+    font-family: 'Space Mono', monospace;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #333;
+    max-width: 980px;
+    margin-bottom: 40px;
+  }
+  .slide.dark-slide .subhead { color: #bbb; }
+
+  /* ---------- EYEBROW (slide 2, 4, 5 etc.) ---------- */
+  .eyebrow {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #45CA9F;
+    margin-bottom: 28px;
+  }
+  .eyebrow.purple { color: #AA44EE; }
+
+  /* ---------- OVERSIZED ANCHOR (slide 1 stat or year) ---------- */
+  .anchor-block {
+    text-align: center;
+    margin: 80px 0 60px;
+  }
+  .anchor-word {
+    font-size: 260px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -10px;
+    color: #0D0D0D;
+    display: block;
+  }
+  .slide.dark-slide .anchor-word { color: #F0EDE8; }
+  .anchor-divider {
+    width: 80px;
+    height: 5px;
+    background: #45CA9F;
+    border: none;
+    margin: 24px auto;
+  }
+  .anchor-caption {
+    font-size: 24px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 400;
+  }
+
+  /* ---------- SIGNATURE QUOTE CARD (corner-bracket chrome) ---------- */
+  .quote-card {
+    position: relative;
+    background: #1a1a1a;
+    padding: 56px 64px;
+    margin: 40px 0;
+    color: #F0EDE8;
+    font-family: 'Space Mono', monospace;
+  }
+  .slide:not(.dark-slide) .quote-card { background: #0D0D0D; }
+
+  .quote-card::before,
+  .quote-card::after,
+  .quote-card > .qc-tr,
+  .quote-card > .qc-br {
+    content: '';
+    position: absolute;
+    width: 36px; height: 36px;
+    border: 3px solid #45CA9F;
+    opacity: 0.55;
+  }
+  .quote-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+  .quote-card::after  { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+  .quote-card > .qc-tr { display: none; } /* kept for semantic symmetry only */
+  .quote-card .qc-bl,
+  .quote-card .qc-br {
+    content: '';
+    position: absolute;
+    width: 36px; height: 36px;
+    border: 3px solid #45CA9F;
+    opacity: 0.55;
+  }
+  .quote-card .qc-bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+  .quote-card .qc-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+  .qc-meta {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #45CA9F;
+    margin-bottom: 20px;
+  }
+  .qc-body {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #F0EDE8;
+    margin-bottom: 28px;
+  }
+  .qc-body .hi { color: #45CA9F; }
+  .qc-attr {
+    text-align: right;
+    font-size: 18px;
+    color: #888;
+    letter-spacing: 1px;
+  }
+
+  /* ---------- MARGINALIA NOTE (slide-level, below content) ---------- */
+  .marg-note {
+    margin-top: 40px;
+    font-size: 26px;
+    color: #555;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 28px;
+  }
+  .slide.dark-slide .marg-note { color: #bbb; }
+  .marg-note::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #45CA9F;
+    font-size: 20px;
+  }
+  .marg-note em {
+    font-style: italic;
+    color: #0D0D0D;
+  }
+  .slide.dark-slide .marg-note em { color: #F0EDE8; }
+
+  /* ---------- PRODUCT REVEAL CARD (slide 4) ---------- */
+  .product-card {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin: 32px 0;
+  }
+  .product-card-head {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .product-logo {
+    width: 64px; height: 64px;
+    background: rgba(69,202,159,0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #45CA9F;
+  }
+  .product-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: #F0EDE8;
+  }
+  .product-tag {
+    font-size: 20px;
+    color: #888;
+    margin-top: 4px;
+  }
+  .product-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .product-bullets li {
+    font-size: 26px;
+    color: #F0EDE8;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 28px;
+  }
+  .product-bullets li::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: #45CA9F;
+  }
+  .product-bullets li strong {
+    font-weight: 700;
+    color: #F0EDE8;
+  }
+
+  /* ---------- LIME UNDERLINE (slide 10 only) ---------- */
+  .lime-under {
+    position: relative;
+    display: inline-block;
+  }
+  .lime-under::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 4px;
+    height: 18px;
+    background: #BAFF39;
+    z-index: -1;
+    opacity: 0.9;
+  }
+
+  /* ---------- FOOTER + STAMP ---------- */
+  .footer {
+    position: absolute;
+    bottom: 100px;
+    left: 140px;
+    right: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 3;
+  }
+  .brand .label {
+    font-size: 18px;
+    color: #aaa;
+  }
+  .brand .handle {
+    font-size: 22px;
+    color: #777;
+    font-weight: 700;
+  }
+  .slide.dark-slide .brand .label  { color: #666; }
+  .slide.dark-slide .brand .handle { color: #aaa; }
+
+  .stamp {
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+  }
+  .stamp-count {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0D0D0D;
+    letter-spacing: 2px;
+  }
+  .slide.dark-slide .stamp-count { color: #F0EDE8; }
+  .stamp-count .sep { color: #45CA9F; margin: 0 8px; }
+  .stamp-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-top: 4px;
+  }
+  .slide.dark-slide .stamp-label { color: #666; }
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+<div class="slide">
+
+  <!-- Corner cartouches -->
+  <div class="cartouche tl"></div>
+  <div class="cartouche tr"></div>
+  <div class="cartouche bl"></div>
+  <div class="cartouche br"></div>
+
+  <!-- Field note header -->
+  <div class="field-note">
+    <div class="fn-line-1">FIELD NOTE № {{ISSUE_NUMBER}} / THE SHIFT</div>
+    <div class="fn-line-2">ISSUE 01 · 2026 · @thevibefounder</div>
+  </div>
+
+  <!-- Marginalia rail -->
+  <div class="rail">
+    <div class="rail-dot"></div>
+    <div class="rail-rule"></div>
+    <div class="rail-label">{{RAIL_LABEL}}</div>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+
+    <!-- OPTIONAL eyebrow (use on slide 2, 4, 5) -->
+    <!-- <div class="eyebrow">THE SIGNAL</div> -->
+
+    <h1 class="headline">
+      {{HEADLINE_LINE_1}}<br>
+      <em data-ghost="{{ITALIC_WORD}}">{{ITALIC_WORD}}</em> <span class="spotlight">{{SPOTLIGHT_WORD}}</span>.
+    </h1>
+
+    <p class="subhead">{{SUBHEAD}}</p>
+
+    <!-- OPTIONAL anchor block (slide 1, 3, 5) -->
+    <div class="anchor-block">
+      <span class="anchor-word">{{ANCHOR_WORD}}</span>
+      <hr class="anchor-divider">
+      <span class="anchor-caption">{{ANCHOR_CAPTION}}</span>
+    </div>
+
+    <!-- OPTIONAL quote card (slide 2, 9) -->
+    <!--
+    <div class="quote-card">
+      <span class="qc-bl"></span><span class="qc-br"></span>
+      <div class="qc-meta">▪ OVERHEARD · 2026-04 ▪</div>
+      <div class="qc-body">"If I have <span class="hi">10</span> employees, can I only keep <span class="hi">two</span>?"</div>
+      <div class="qc-attr">⟶ every founder in 2026</div>
+    </div>
+    -->
+
+    <!-- OPTIONAL product reveal card (slide 4 only) -->
+    <!--
+    <div class="product-card">
+      <div class="product-card-head">
+        <div class="product-logo">O</div>
+        <div>
+          <div class="product-name">{{PRODUCT_NAME}}</div>
+          <div class="product-tag">{{PRODUCT_TAGLINE}}</div>
+        </div>
+      </div>
+      <ul class="product-bullets">
+        <li><strong>{{BULLET_1_LABEL}}.</strong> {{BULLET_1_BODY}}</li>
+        <li><strong>{{BULLET_2_LABEL}}.</strong> {{BULLET_2_BODY}}</li>
+        <li><strong>{{BULLET_3_LABEL}}.</strong> {{BULLET_3_BODY}}</li>
+      </ul>
+    </div>
+    -->
+
+    <!-- Marginalia note -->
+    <p class="marg-note">{{MARGINALIA_NOTE}}</p>
+
+  </div>
+
+  <!-- Footer + stamp -->
+  <div class="footer">
+    <div class="brand">
+      <div class="label">Instagram</div>
+      <div class="handle">@thevibefounder</div>
+    </div>
+    <div class="stamp">
+      <div class="stamp-count">{{SLIDE_NUMBER}}<span class="sep">▪</span>10</div>
+      <div class="stamp-label">THE SHIFT</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+  function scaleSlide() {
+    const wrapper = document.querySelector('.slide-wrapper');
+    const scaleX = window.innerWidth / 1440;
+    const scaleY = window.innerHeight / 1800;
+    const scale = Math.min(scaleX, scaleY);
+    wrapper.style.transform = `scale(${scale})`;
+    wrapper.style.transformOrigin = 'center center';
+    wrapper.style.position = 'absolute';
+    wrapper.style.left = '50%';
+    wrapper.style.top = '50%';
+    wrapper.style.marginLeft = `-${1440/2}px`;
+    wrapper.style.marginTop = `-${1800/2}px`;
+  }
+  scaleSlide();
+  window.addEventListener('resize', scaleSlide);
+</script>
+</body>
+</html>

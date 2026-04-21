@@ -1,7 +1,9 @@
 # local working files
 files (*)
 files (*).zip
-*.zip
+
+# top-level zips are uploads; skill bundle zips live inside skills/<slug>/ and are committed
+/*.zip
 
 # worker source lives in the private repo — don't re-commit if copied locally
 worker/
