@@ -5,26 +5,28 @@ Public source for **[thevibefounder.com](https://thevibefounder.com)** — the T
 ## Structure
 
 ```
-/index.html                                                      — apex landing
-/skills/index.html                                               — skills hub
-/skills/thevibefounder-social-insta-slide-skill-01-apr-21.html   — skill 01
+/index.html                       — apex landing
+/skills/index.html                — skills hub
+/skills/<slug>/index.html         — skill detail page
+/skills/<slug>/<bundle>.zip       — downloadable skill bundle
+/skills/<slug>/SKILL.md …         — loose source files (browsable on GitHub)
 ```
 
-Skills follow the naming convention `thevibefounder-<category>-<slug>-skill-<NN>-<date>` so the repo stays self-documenting as more skills ship.
+Each skill gets a short memorable URL (`/skills/news-drop/`). Inside the folder, the zip and SKILL.md keep the self-documenting full skill ID (`thevibefounder-social-insta-slide-skill-01-apr-21`) so the agent-facing name stays explicit.
 
 ## How people get a skill
 
 1. Visit `/skills/` and pick a skill
-2. Drop their email on the detail page
-3. Get a signed, time-limited download link emailed + auto-triggered
+2. Click **Download skill** on the detail page → direct GitHub download
+3. Unzip into `.claude/skills/<id>/` and they're set
 
-Bundles are hosted on R2 and distributed via a Cloudflare Worker. Infrastructure lives outside this repo; this repo is only the public site.
+No email gate, no account. Open source bundle, MIT licensed.
 
 ## Skills shipped
 
-| # | Skill | Format | Status |
-|---|-------|--------|--------|
-| 01 | [thevibefounder-social-insta-slide-skill-01-apr-21](./skills/thevibefounder-social-insta-slide-skill-01-apr-21.html) | 1-slide Instagram post · Claude Code skill | Live |
+| # | Slug | Name | Status |
+|---|------|------|--------|
+| 01 | [`news-drop`](./skills/news-drop/) | TVF News Drop — 1-Slide Instagram Post | Live |
 
 ## License
 
