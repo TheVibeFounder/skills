@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Skills · TheVibeFounder</title>
-<meta name="description" content="Open-source skills from TheVibeFounder. Drop in. Ship faster.">
-<meta property="og:title" content="Skills · TheVibeFounder">
-<meta property="og:description" content="Open-source skills from TheVibeFounder. Drop in. Ship faster.">
+<title>TheVibeFounder — Build with agents. See how it's done.</title>
+<meta name="description" content="A Forbes 30U30 founder building live with AI agents. Every Sunday, on camera, unedited.">
+<meta property="og:title" content="TheVibeFounder — Build with agents">
+<meta property="og:description" content="A Forbes 30U30 founder building live with AI agents. Every Sunday, on camera, unedited.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#F0EDE8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,69 +33,48 @@ a{color:inherit;text-decoration:none;}
 .nav-r a{margin-left:24px;}
 .nav-r a:hover{color:var(--amber);}
 
-.hero{padding:96px 48px 64px;max-width:1200px;margin:0 auto;}
+.hero{padding:96px 48px 48px;max-width:1200px;margin:0 auto;}
 .eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:32px;}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
-h1.display{font-family:var(--serif);font-size:96px;line-height:0.92;letter-spacing:-0.025em;color:var(--ink);margin-bottom:32px;max-width:18ch;}
-h1.display .it{font-style:italic;color:var(--amber);}
-h1.display .f{opacity:0.22;}
-.sub{font-size:14px;line-height:1.9;color:var(--mid);max-width:56ch;margin-bottom:48px;}
-.rule{height:0.5px;background:var(--rule);margin:48px 0;}
+h1.wm{font-family:var(--serif);font-size:128px;line-height:0.88;letter-spacing:-0.025em;color:var(--ink);margin-bottom:48px;}
+h1.wm .f{opacity:0.22;}
+h1.wm .r{color:var(--ink);}
+.lede{font-size:15px;line-height:1.9;color:var(--mid);max-width:56ch;margin-bottom:48px;}
+.lede em{font-style:italic;color:var(--amber);}
+.rule{height:0.5px;background:var(--rule);margin:0;}
 
-.sec{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
-.sec-count{font-size:10px;letter-spacing:0.18em;color:var(--soft);text-transform:uppercase;}
-.sec-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
-
-.grid{padding:0 48px 96px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:3px;}
-.card{background:var(--surface);border:0.5px solid var(--rule);padding:40px;display:flex;flex-direction:column;min-height:360px;transition:border-color 0.2s;color:var(--ink);}
+.cards{padding:72px 48px 96px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.card{background:var(--surface);border:0.5px solid var(--rule);padding:40px;display:flex;flex-direction:column;min-height:280px;transition:border-color 0.2s;color:var(--ink);}
 .card:hover{border-color:var(--rule-strong);}
-.card[data-state="soon"]{background:transparent;border-style:dashed;pointer-events:none;}
-.card[data-state="soon"] h2,.card[data-state="soon"] p{color:var(--soft);}
-.tag-row{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
-.tag{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);border:0.5px solid var(--rule-strong);padding:4px 10px;}
-.tag.amber{color:var(--amber);border-color:rgba(240,154,26,0.45);}
-.card h2{font-family:var(--serif);font-size:36px;line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:20px;}
-.card p{font-size:13px;line-height:1.9;color:var(--mid);margin-bottom:32px;flex-grow:1;}
-.card-meta{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:10px;color:var(--soft);line-height:1.9;margin-bottom:24px;padding-top:20px;border-top:0.5px solid var(--rule);}
-.card-meta .k{color:var(--meta);letter-spacing:0.12em;text-transform:uppercase;font-size:9px;}
+.card .kicker{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.card h2{font-family:var(--serif);font-size:32px;line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:16px;}
+.card p{font-size:13px;line-height:1.9;color:var(--mid);margin-bottom:28px;flex-grow:1;}
 .card-cta{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);align-self:flex-start;padding:12px 0;border-bottom:0.5px solid var(--amber);transition:gap 0.15s;}
 .card:hover .card-cta{gap:14px;}
-.card[data-state="soon"] .card-cta{color:var(--soft);border-color:var(--rule-strong);}
 
-.sub-band-wrap{background:var(--dark);}
-.sub-band{max-width:1200px;margin:0 auto;padding:72px 48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;color:rgba(255,255,255,0.85);}
-.sub-band h3{font-family:var(--serif);font-size:36px;line-height:1.05;letter-spacing:-0.02em;color:white;}
-.sub-band h3 .it{font-style:italic;color:var(--amber);}
-.sub-band .kicker{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-.sub-band p.sb{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.9;margin-top:16px;max-width:44ch;}
-.sub-form{display:flex;border-bottom:0.5px solid rgba(255,255,255,0.2);transition:border-color 0.15s;}
-.sub-form:focus-within{border-color:var(--amber);}
-.sub-form input{flex:1;min-width:0;background:transparent;border:none;color:white;font-family:var(--mono);font-size:14px;padding:16px 0;outline:none;}
-.sub-form input::placeholder{color:rgba(255,255,255,0.35);}
-.sub-form button{background:var(--amber);color:#0E0E0E;border:none;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:14px 22px;cursor:pointer;margin-left:16px;display:flex;align-items:center;gap:10px;transition:opacity 0.15s;white-space:nowrap;}
-.sub-form button:hover{opacity:0.92;}
-.sub-form button[disabled]{opacity:0.5;cursor:not-allowed;}
-.sub-status{font-size:11px;margin-top:12px;min-height:1.2em;color:rgba(255,255,255,0.55);}
-.sub-status.ok{color:var(--amber);}
-.sub-status.err{color:#ff8a7a;}
+.session{max-width:1200px;margin:0 auto;padding:0 48px 96px;}
+.session-row{background:var(--dark);color:rgba(255,255,255,0.85);padding:48px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;}
+.session-row .k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.session-row h3{font-family:var(--serif);font-size:36px;line-height:1.05;letter-spacing:-0.02em;color:white;}
+.session-row h3 .it{font-style:italic;color:var(--amber);}
+.session-row p{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.9;margin-top:12px;max-width:48ch;}
+.session-row .when{font-family:var(--serif);font-size:22px;color:white;letter-spacing:-0.015em;text-align:right;}
+.session-row .when small{display:block;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.16em;text-transform:uppercase;margin-top:6px;}
 
 .foot{padding:40px 48px;border-top:0.5px solid var(--rule);display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);background:var(--cream);}
 .foot a:hover{color:var(--amber);}
 
-@media (max-width:760px){
+@media (max-width:900px){
   .nav{padding:20px 24px;}
   .nav-r a{margin-left:16px;}
-  .hero{padding:56px 24px 40px;}
-  h1.display{font-size:52px;line-height:0.96;}
-  .sub{font-size:13px;}
-  .grid{padding:0 24px 64px;grid-template-columns:1fr;}
+  .hero{padding:56px 24px 32px;}
+  h1.wm{font-size:64px;line-height:0.92;}
+  .lede{font-size:14px;}
+  .cards{padding:48px 24px 64px;grid-template-columns:1fr;}
   .card{padding:28px;min-height:0;}
-  .card h2{font-size:28px;}
-  .sub-band{padding:56px 24px;grid-template-columns:1fr;gap:32px;}
-  .sub-band h3{font-size:28px;}
-  .sub-form{flex-direction:column;border:none;}
-  .sub-form input{border-bottom:0.5px solid rgba(255,255,255,0.2);padding:14px 0;}
-  .sub-form button{margin:16px 0 0;justify-content:center;}
+  .session{padding:0 24px 64px;}
+  .session-row{padding:32px;grid-template-columns:1fr;gap:24px;}
+  .session-row .when{text-align:left;}
   .foot{padding:28px 24px;flex-direction:column;gap:12px;}
 }
 @media (max-width:480px){
@@ -103,17 +82,16 @@ h1.display .f{opacity:0.22;}
   .nav-l{font-size:18px;}
   .nav-r{font-size:9px;letter-spacing:0.14em;}
   .nav-r a{margin-left:12px;}
-  .hero{padding:40px 20px 28px;}
-  h1.display{font-size:40px;letter-spacing:-0.02em;}
+  .hero{padding:40px 20px 24px;}
+  h1.wm{font-size:48px;}
   .eyebrow{font-size:9px;margin-bottom:24px;}
-  .sub{font-size:13px;margin-bottom:32px;}
-  .grid{padding:0 20px 48px;}
+  .lede{font-size:13px;margin-bottom:32px;}
+  .cards{padding:40px 20px 48px;}
   .card{padding:24px;}
-  .card h2{font-size:24px;}
-  .card p{font-size:12px;}
-  .card-meta{font-size:9px;}
-  .sub-band{padding:40px 20px;}
-  .sub-band h3{font-size:26px;}
+  .card h2{font-size:26px;}
+  .session{padding:0 20px 48px;}
+  .session-row{padding:24px;}
+  .session-row h3{font-size:26px;}
   .foot{padding:24px 20px;font-size:9px;}
 }
 </style>
@@ -123,105 +101,60 @@ h1.display .f{opacity:0.22;}
 <nav class="nav">
   <a href="/" class="nav-l"><span class="f">The</span>Vibe<span class="f">Founder</span></a>
   <div class="nav-r">
-    <a href="/">Skills</a>
+    <a href="/skills/">Skills</a>
     <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a>
     <a href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">Instagram</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="eyebrow"><span class="dot"></span>Skills · v1.0 · Live</div>
-  <h1 class="display"><span class="f">Claude Code</span><br>skills <span class="it">that ship</span>.</h1>
-  <p class="sub">Drop-in skills built from real sessions. No theory. No "10 prompts you need." Just the exact files I use on camera — packaged so you can run them tonight.</p>
-  <div class="sec-row">
-    <div class="sec">Available skills</div>
-    <div class="sec-count">01 live · more Sunday</div>
-  </div>
-  <div class="rule" style="margin:16px 0 0;"></div>
+  <div class="eyebrow"><span class="dot"></span>System active · Build Live · Sunday 21:00 IST</div>
+  <h1 class="wm"><span class="f">The</span><br><span class="r">Vibe</span><br><span class="f">Founder</span></h1>
+  <p class="lede">A Forbes 30 Under 30 founder who scaled Simplified AI to 20M users — now building live on camera, <em>unedited</em>, every Sunday. One founder running a company with agents. You see the tools, the configs, the decisions, and what broke.</p>
 </header>
 
-<section class="grid">
+<div class="rule"></div>
 
-  <a class="card" href="/thevibefounder-social-insta-slide-skill-01-apr-21.html">
-    <div class="tag-row">
-      <span class="tag amber">Claude Code Skill</span>
-      <span class="tag">Instagram</span>
-      <span class="tag">1 slide</span>
-    </div>
-    <h2>The News Drop — one slide, one claim, one CTA.</h2>
-    <p>Single-slide Instagram post format. Space Mono, teal spotlight brackets, field-note chrome, stamp footer. 1440×1800 render-ready HTML with full agent instructions baked in.</p>
-    <div class="card-meta">
-      <span class="k">Type</span><span>Claude Code skill bundle</span>
-      <span class="k">Format</span><span>SKILL.md + boilerplate.html</span>
-      <span class="k">Size</span><span>~10 KB · zip</span>
-      <span class="k">License</span><span>MIT · free · attribution appreciated</span>
-    </div>
-    <span class="card-cta">Get the skill →</span>
+<section class="cards">
+
+  <a class="card" href="/skills/">
+    <div class="kicker"><span class="dot"></span>Skills · 01 live</div>
+    <h2>Claude Code skills that ship.</h2>
+    <p>Drop-in skills built from real sessions. No theory. Just the exact files I use on camera — packaged so you can run them tonight.</p>
+    <span class="card-cta">Browse skills →</span>
   </a>
 
-  <div class="card" data-state="soon">
-    <div class="tag-row">
-      <span class="tag">Soon</span>
-    </div>
-    <h2>More skills, dropping live on Sunday sessions.</h2>
-    <p>Each skill is shipped inside a Build Live session. You see it get built, then it lands here.</p>
-    <div class="card-meta">
-      <span class="k">Next</span><span>Session 30 · Sunday 21:00 IST</span>
-    </div>
-    <span class="card-cta">Queued</span>
-  </div>
+  <a class="card" href="https://letter.thevibefounder.com" target="_blank" rel="noopener">
+    <div class="kicker"><span class="dot"></span>Letter</div>
+    <h2>Session notes, configs, what broke.</h2>
+    <p>One email when a new skill drops. Session recaps. Real numbers. Zero spam. Unsubscribe anytime.</p>
+    <span class="card-cta">Read the letter →</span>
+  </a>
+
+  <a class="card" href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">
+    <div class="kicker"><span class="dot"></span>Instagram</div>
+    <h2>Build drops, news drops, daily signal.</h2>
+    <p>The feed where the sessions land. Tool launches, shipped skills, carousels that track the shift in real time.</p>
+    <span class="card-cta">Follow @thevibefounder →</span>
+  </a>
 
 </section>
 
-<div class="sub-band-wrap">
-  <section class="sub-band" id="subscribe">
+<section class="session">
+  <div class="session-row">
     <div>
-      <div class="kicker"><span class="dot"></span>Subscribe</div>
-      <h3>New skills, every <span class="it">Sunday</span>.</h3>
-      <p class="sb">One email when a new skill drops. Session notes, configs, what broke. No spam. Unsubscribe anytime.</p>
+      <div class="k"><span class="dot"></span>Next build live</div>
+      <h3>Session <span class="it">30</span> · live on camera.</h3>
+      <p>I build something real, from nothing, in a single session. You see every click, every prompt, every config. Come watch, or come build.</p>
     </div>
-    <div>
-      <form class="sub-form" id="sub-form" novalidate>
-        <input type="email" id="sub-email" placeholder="you@domain.com" autocomplete="email" required>
-        <button type="submit" id="sub-btn"><span>Subscribe</span><span style="font-family:var(--serif);">→</span></button>
-      </form>
-      <div class="sub-status" id="sub-status" aria-live="polite"></div>
-    </div>
-  </section>
-</div>
+    <div class="when">Sunday<br>21:00 IST<small>· Next session</small></div>
+  </div>
+</section>
 
 <footer class="foot">
   <div>© 2026 TheVibeFounder</div>
-  <div><a href="/">Skills</a> &nbsp;·&nbsp; <a href="https://letter.thevibefounder.com">Letter</a> &nbsp;·&nbsp; <a href="https://instagram.com/thevibefounder">Instagram</a> &nbsp;·&nbsp; <a href="https://x.com/thevibefounder">X</a></div>
+  <div><a href="/skills/">Skills</a> &nbsp;·&nbsp; <a href="https://letter.thevibefounder.com">Letter</a> &nbsp;·&nbsp; <a href="https://instagram.com/thevibefounder">Instagram</a> &nbsp;·&nbsp; <a href="https://x.com/thevibefounder">X</a></div>
 </footer>
-
-<script>
-(function(){
-  var form = document.getElementById('sub-form');
-  var email = document.getElementById('sub-email');
-  var btn = document.getElementById('sub-btn');
-  var status = document.getElementById('sub-status');
-  var ENDPOINT = '/api/subscribe';
-  var RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    status.className = 'sub-status';
-    var v = (email.value||'').trim();
-    if(!RE.test(v)){ status.className='sub-status err'; status.textContent='Enter a valid email.'; return; }
-    btn.disabled = true; btn.querySelector('span').textContent = 'Subscribing…';
-    try {
-      var res = await fetch(ENDPOINT, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:v,source:'skills-index'})});
-      if(!res.ok) throw 0;
-      status.className='sub-status ok'; status.textContent='Subscribed. See you Sunday.';
-      email.value = '';
-    } catch(err){
-      status.className='sub-status err'; status.textContent='Could not subscribe. Try again or email ajay@thevibefounder.com.';
-    } finally {
-      btn.disabled = false; btn.querySelector('span').textContent = 'Subscribe';
-    }
-  });
-})();
-</script>
 
 </body>
 </html>
