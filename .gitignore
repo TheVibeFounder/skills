@@ -1,0 +1,14 @@
+# local working files
+files (*)
+files (*).zip
+*.zip
+
+# worker source lives in the private repo — don't re-commit if copied locally
+worker/
+
+# macOS
+.DS_Store
+
+# editor / deps
+node_modules/
+.vscode/

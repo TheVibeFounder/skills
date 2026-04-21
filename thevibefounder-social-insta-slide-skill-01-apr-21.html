@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TVF News Drop · 1-Slide Skill · TheVibeFounder</title>
+<meta name="description" content="Single-slide Instagram post skill. One frame, one claim, one CTA. Free + MIT.">
+<meta property="og:title" content="TVF News Drop · 1-Slide Instagram Post Skill">
+<meta property="og:description" content="Single-slide Instagram post skill. One frame, one claim, one CTA.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F0EDE8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --dark:#0E0E0E;--cream:#F0EDE8;--amber:#F09A1A;
+  --ink:#1A1A1A;--mid:#444;--soft:#666;--meta:#888;
+  --rule:rgba(10,10,10,0.08);
+  --rule-strong:rgba(10,10,10,0.14);
+  --surface:#FFFFFF;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'Geist Mono','Courier New',monospace;
+}
+html,body{background:var(--cream);color:var(--ink);font-family:var(--mono);font-weight:400;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:32px 48px;border-bottom:0.5px solid var(--rule);}
+.nav-l{font-family:var(--serif);font-size:22px;letter-spacing:-0.025em;line-height:1;color:var(--ink);}
+.nav-l .f{opacity:0.22;}
+.nav-r{font-size:10px;letter-spacing:0.18em;color:var(--soft);text-transform:uppercase;}
+.nav-r a{margin-left:24px;}
+.nav-r a:hover{color:var(--amber);}
+
+.crumbs{max-width:1200px;margin:0 auto;padding:32px 48px 0;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);}
+.crumbs a:hover{color:var(--amber);}
+.crumbs .sep{margin:0 12px;opacity:0.5;}
+
+.wrap{max-width:1200px;margin:0 auto;padding:48px;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start;}
+
+.eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:32px;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+h1{font-family:var(--serif);font-size:64px;line-height:0.98;letter-spacing:-0.025em;color:var(--ink);margin-bottom:32px;}
+h1 .it{font-style:italic;color:var(--amber);}
+.lede{font-size:14px;line-height:1.9;color:var(--mid);margin-bottom:40px;max-width:54ch;}
+.rule{height:0.5px;background:var(--rule);margin:40px 0;}
+.sec{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;}
+ul.spec{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:14px 20px;font-size:12px;color:var(--mid);line-height:1.7;}
+ul.spec .k{color:var(--meta);letter-spacing:0.12em;text-transform:uppercase;font-size:10px;padding-top:3px;}
+ul.spec .v{color:var(--ink);}
+
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:16px;}
+.feat{background:var(--surface);border:0.5px solid var(--rule);padding:20px;}
+.feat .num{font-family:var(--serif);font-size:22px;color:var(--amber);margin-bottom:8px;}
+.feat .t{font-size:12px;color:var(--ink);margin-bottom:6px;}
+.feat .d{font-size:11px;color:var(--soft);line-height:1.8;}
+code{font-family:var(--mono);background:rgba(240,154,26,0.1);color:#8A5200;padding:2px 6px;font-size:11px;border:0.5px solid rgba(240,154,26,0.3);}
+
+.steps{list-style:none;}
+.steps li{display:grid;grid-template-columns:32px 1fr;gap:16px;padding:14px 0;border-bottom:0.5px solid var(--rule);align-items:baseline;}
+.steps li:last-child{border-bottom:none;}
+.steps .n{font-size:10px;letter-spacing:0.14em;color:var(--amber);}
+.steps .s{font-size:12px;color:var(--mid);line-height:1.7;}
+
+.dl{position:sticky;top:32px;background:var(--dark);border:0.5px solid var(--dark);padding:32px;color:rgba(255,255,255,0.85);}
+.dl-tag{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.dl h3{font-family:var(--serif);font-size:28px;color:white;line-height:1.1;letter-spacing:-0.015em;margin-bottom:12px;}
+.dl .sub{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:28px;}
+.field{display:block;margin-bottom:16px;}
+.field label{display:block;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;}
+.field input{width:100%;background:transparent;border:none;border-bottom:0.5px solid rgba(255,255,255,0.22);color:white;font-family:var(--mono);font-size:14px;padding:10px 0;outline:none;transition:border-color 0.15s;}
+.field input:focus{border-color:var(--amber);}
+.field input::placeholder{color:rgba(255,255,255,0.3);}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:10px;color:rgba(255,255,255,0.5);line-height:1.7;margin:8px 0 24px;}
+.consent input{margin-top:2px;accent-color:var(--amber);}
+.btn{display:flex;width:100%;justify-content:space-between;align-items:center;background:var(--amber);color:#0E0E0E;border:none;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:18px 20px;cursor:pointer;transition:opacity 0.15s;}
+.btn:hover{opacity:0.92;}
+.btn[disabled]{opacity:0.5;cursor:not-allowed;}
+.btn .arr{font-family:var(--serif);}
+.meta-row{margin-top:20px;padding-top:20px;border-top:0.5px solid rgba(255,255,255,0.08);display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;}
+.meta-row strong{color:white;font-weight:400;display:block;margin-top:4px;font-family:var(--serif);font-size:16px;text-transform:none;letter-spacing:-0.01em;}
+.status{margin-top:20px;font-size:11px;line-height:1.7;min-height:1.2em;}
+.status.err{color:#ff8a7a;}
+.status.ok{color:var(--amber);}
+
+.sub-band-wrap{background:var(--dark);}
+.sub-band{max-width:1200px;margin:0 auto;padding:72px 48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;color:rgba(255,255,255,0.85);}
+.sub-band h3{font-family:var(--serif);font-size:36px;line-height:1.05;letter-spacing:-0.02em;color:white;}
+.sub-band h3 .it{font-style:italic;color:var(--amber);}
+.sub-band .kicker{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.sub-band p.sb{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.9;margin-top:16px;max-width:44ch;}
+.sub-form{display:flex;border-bottom:0.5px solid rgba(255,255,255,0.2);transition:border-color 0.15s;}
+.sub-form:focus-within{border-color:var(--amber);}
+.sub-form input{flex:1;min-width:0;background:transparent;border:none;color:white;font-family:var(--mono);font-size:14px;padding:16px 0;outline:none;}
+.sub-form input::placeholder{color:rgba(255,255,255,0.35);}
+.sub-form button{background:var(--amber);color:#0E0E0E;border:none;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:14px 22px;cursor:pointer;margin-left:16px;display:flex;align-items:center;gap:10px;transition:opacity 0.15s;white-space:nowrap;}
+.sub-form button:hover{opacity:0.92;}
+.sub-form button[disabled]{opacity:0.5;cursor:not-allowed;}
+.sub-status{font-size:11px;margin-top:12px;min-height:1.2em;color:rgba(255,255,255,0.55);}
+.sub-status.ok{color:var(--amber);}
+.sub-status.err{color:#ff8a7a;}
+
+.foot{padding:40px 48px;border-top:0.5px solid var(--rule);display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);background:var(--cream);}
+.foot a:hover{color:var(--amber);}
+
+@media (max-width:900px){
+  .nav{padding:20px 24px;}
+  .nav-r a{margin-left:16px;}
+  .crumbs{padding:24px 24px 0;}
+  .wrap{padding:32px 24px;grid-template-columns:1fr;gap:48px;}
+  h1{font-size:44px;line-height:1.02;}
+  .lede{font-size:13px;}
+  .dl{position:static;padding:24px;}
+  .feats{grid-template-columns:1fr;}
+  .sub-band{padding:56px 24px;grid-template-columns:1fr;gap:32px;}
+  .sub-band h3{font-size:28px;}
+  .sub-form{flex-direction:column;border:none;}
+  .sub-form input{border-bottom:0.5px solid rgba(255,255,255,0.2);padding:14px 0;}
+  .sub-form button{margin:16px 0 0;justify-content:center;}
+  .foot{padding:28px 24px;flex-direction:column;gap:12px;}
+}
+@media (max-width:520px){
+  .nav{padding:16px 20px;}
+  .nav-l{font-size:18px;}
+  .nav-r{font-size:9px;}
+  .nav-r a{margin-left:12px;}
+  .crumbs{padding:20px 20px 0;font-size:9px;}
+  .wrap{padding:24px 20px;gap:36px;}
+  h1{font-size:34px;letter-spacing:-0.02em;}
+  .lede{font-size:13px;line-height:1.8;}
+  ul.spec{grid-template-columns:1fr;gap:4px 0;}
+  ul.spec .k{padding-top:10px;}
+  .steps li{grid-template-columns:24px 1fr;gap:10px;}
+  .dl{padding:20px;}
+  .dl h3{font-size:24px;}
+  .btn{padding:16px;font-size:11px;}
+  .sub-band{padding:40px 20px;}
+  .foot{padding:24px 20px;font-size:9px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-l"><span class="f">The</span>Vibe<span class="f">Founder</span></a>
+  <div class="nav-r">
+    <a href="/">Skills</a>
+    <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a>
+    <a href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="crumbs">
+  <a href="/">Home</a><span class="sep">/</span><a href="/">Skills</a><span class="sep">/</span><span style="color:var(--ink);">News Drop · 1-Slide</span>
+</div>
+
+<main class="wrap">
+
+  <div>
+    <div class="eyebrow"><span class="dot"></span>Skill · 01 · Live · v2026.04.21</div>
+    <h1>The News Drop — <span class="it">one slide</span>, one claim, one CTA.</h1>
+    <p class="lede">A Claude Code skill that generates a single pixel-perfect 1440×1800 Instagram post. Corner cartouche brackets, field-note header, spotlight-bracket headline, stamp footer. Full agent instructions baked in — drop it into any project and ask for a news drop.</p>
+
+    <div class="rule"></div>
+
+    <div class="sec">What's inside</div>
+    <ul class="spec">
+      <li class="k">ID</li><li class="v">thevibefounder-social-insta-slide-skill-01-apr-21</li>
+      <li class="k">Version</li><li class="v">2026.04.21</li>
+      <li class="k">Format</li><li class="v">SKILL.md (full agent instructions) + boilerplate.html + README + LICENSE</li>
+      <li class="k">Canvas</li><li class="v">1440 × 1800px (4:5) · Space Mono</li>
+      <li class="k">Accent</li><li class="v">Teal #45CA9F · spotlight brackets · ghost-trail italics</li>
+      <li class="k">Renderer</li><li class="v">Playwright · headless Chromium · HTML → PNG</li>
+      <li class="k">Modes</li><li class="v">Light (default, cream) · Dark (breaking-news gravitas)</li>
+      <li class="k">Size</li><li class="v">~10 KB · zip</li>
+      <li class="k">License</li><li class="v">MIT · free to use, remix, adapt</li>
+    </ul>
+
+    <div class="rule"></div>
+
+    <div class="sec">Signature chrome</div>
+    <div class="feats">
+      <div class="feat"><div class="num">01</div><div class="t">Corner cartouche brackets</div><div class="d">Thin teal tick-marks, four corners. Viewfinder frame that anchors the slide.</div></div>
+      <div class="feat"><div class="num">02</div><div class="t">Field-note header</div><div class="d">Uppercase monospace metadata. Issue № increments per drop shipped.</div></div>
+      <div class="feat"><div class="num">03</div><div class="t">Spotlight-bracket headline</div><div class="d">One word wrapped in teal corner brackets. Static, no animation.</div></div>
+      <div class="feat"><div class="num">04</div><div class="t">Stamp fraction footer</div><div class="d">Reads like a rubber stamp. Bottom-right, inside the right cartouche.</div></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="sec">When to use</div>
+    <ul class="spec">
+      <li class="k">Yes</li><li class="v">Breaking news · hot takes · standalone announcements</li>
+      <li class="k">Yes</li><li class="v">Any post where the statement stands alone</li>
+      <li class="k">No</li><li class="v">Step-by-step breakdowns · use Deep Dive</li>
+      <li class="k">No</li><li class="v">Belief-flip narratives · use Shift Carousel (10 slides)</li>
+      <li class="k">No</li><li class="v">Tool feature launches · use Tools Announcement</li>
+    </ul>
+
+    <div class="rule"></div>
+
+    <div class="sec">How to install</div>
+    <ol class="steps">
+      <li><span class="n">01</span><span class="s">Enter your email on the right and download the <code>.zip</code>.</span></li>
+      <li><span class="n">02</span><span class="s">Unzip into <code>.claude/skills/thevibefounder-social-insta-slide-skill-01-apr-21/</code> in your project.</span></li>
+      <li><span class="n">03</span><span class="s">Install the renderer: <code>npm install</code> + <code>npx playwright install chromium</code>.</span></li>
+      <li><span class="n">04</span><span class="s">In Claude Code, ask: <em style="color:var(--ink);">"make a news drop about X"</em> — SKILL.md carries the full agent playbook; the skill auto-triggers.</span></li>
+      <li><span class="n">05</span><span class="s">Output PNG lands in <code>./out/</code> at 1440×1800. Ship.</span></li>
+    </ol>
+  </div>
+
+  <aside class="dl">
+    <div class="dl-tag"><span class="dot"></span>Free download</div>
+    <h3>Get the skill.</h3>
+    <p class="sub">Drop your email. We email the link and ping you when new skills ship. No spam. Unsubscribe anytime.</p>
+    <form id="dl-form" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@domain.com" autocomplete="email" required>
+      </div>
+      <label class="consent">
+        <input type="checkbox" id="consent" checked>
+        <span>Email me future skills + session notes. I can unsubscribe anytime.</span>
+      </label>
+      <button type="submit" class="btn" id="submit-btn">
+        <span>Download skill</span><span class="arr">→</span>
+      </button>
+      <div class="status" id="status" aria-live="polite"></div>
+    </form>
+    <div class="meta-row">
+      <div>Version<strong>2026.04.21</strong></div>
+      <div>License<strong>MIT</strong></div>
+    </div>
+  </aside>
+
+</main>
+
+<div class="sub-band-wrap">
+  <section class="sub-band" id="subscribe">
+    <div>
+      <div class="kicker"><span class="dot"></span>Subscribe</div>
+      <h3>New skills, every <span class="it">Sunday</span>.</h3>
+      <p class="sb">One email when a new skill drops. Session notes, configs, what broke. No spam. Unsubscribe anytime.</p>
+    </div>
+    <div>
+      <form class="sub-form" id="sub-form" novalidate>
+        <input type="email" id="sub-email" placeholder="you@domain.com" autocomplete="email" required>
+        <button type="submit" id="sub-btn"><span>Subscribe</span><span style="font-family:var(--serif);">→</span></button>
+      </form>
+      <div class="sub-status" id="sub-status" aria-live="polite"></div>
+    </div>
+  </section>
+</div>
+
+<footer class="foot">
+  <div>© 2026 TheVibeFounder</div>
+  <div><a href="/">Skills</a> &nbsp;·&nbsp; <a href="https://letter.thevibefounder.com">Letter</a> &nbsp;·&nbsp; <a href="https://instagram.com/thevibefounder">Instagram</a> &nbsp;·&nbsp; <a href="https://x.com/thevibefounder">X</a></div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('dl-form');
+  var emailEl = document.getElementById('email');
+  var btn = document.getElementById('submit-btn');
+  var status = document.getElementById('status');
+  var SKILL_ID = 'thevibefounder-social-insta-slide-skill-01-apr-21';
+  var ENDPOINT = '/api/skill-download';
+  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    status.className = 'status';
+    status.textContent = '';
+    var email = (emailEl.value || '').trim();
+    var consent = document.getElementById('consent').checked;
+    if(!isEmail(email)){ status.className='status err'; status.textContent='Enter a valid email.'; return; }
+    btn.disabled = true; btn.querySelector('span').textContent = 'Preparing download…';
+    try {
+      var res = await fetch(ENDPOINT, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,skill:SKILL_ID,consent:consent})});
+      if(!res.ok) throw new Error('Request failed');
+      var data = await res.json();
+      if(!data.url) throw new Error('No download URL');
+      status.className='status ok'; status.textContent='Check your email. Download starting…';
+      var a = document.createElement('a');
+      a.href = data.url; a.download = '';
+      document.body.appendChild(a); a.click(); a.remove();
+    } catch(err) {
+      status.className='status err'; status.textContent='Something broke. Email ajay@thevibefounder.com and I will send it directly.';
+    } finally {
+      btn.disabled = false; btn.querySelector('span').textContent = 'Download skill';
+    }
+  });
+})();
+(function(){
+  var form = document.getElementById('sub-form');
+  var email = document.getElementById('sub-email');
+  var btn = document.getElementById('sub-btn');
+  var status = document.getElementById('sub-status');
+  var ENDPOINT = '/api/subscribe';
+  var RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    status.className='sub-status';
+    var v = (email.value||'').trim();
+    if(!RE.test(v)){ status.className='sub-status err'; status.textContent='Enter a valid email.'; return; }
+    btn.disabled = true; btn.querySelector('span').textContent='Subscribing…';
+    try {
+      var res = await fetch(ENDPOINT, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:v,source:'skill-detail-news-drop'})});
+      if(!res.ok) throw 0;
+      status.className='sub-status ok'; status.textContent='Subscribed. See you Sunday.';
+      email.value='';
+    } catch(err){
+      status.className='sub-status err'; status.textContent='Could not subscribe. Try again.';
+    } finally {
+      btn.disabled = false; btn.querySelector('span').textContent='Subscribe';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
