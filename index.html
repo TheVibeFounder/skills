@@ -27,6 +27,27 @@ html,body{background:var(--cream);color:var(--ink);font-family:var(--mono);font-
 a{color:inherit;text-decoration:none;}
 .container{max-width:1200px;margin:0 auto;padding:0 48px;}
 
+/* WORDMARK REVEAL — brand-rule-as-motion
+   "The" and "Founder" fade to 18% opacity, "Vibe" slams in at 100%.
+   Runs once per session on nav, and once when footer scrolls in. */
+.nav-l .f, .foot-wm .f { opacity: 0.22; }
+.wm-reveal .f, .wm-reveal .r { opacity: 0; }
+.wm-reveal .f { transform: translateY(6px); transition: opacity 360ms cubic-bezier(0.22,1,0.36,1), transform 420ms cubic-bezier(0.22,1,0.36,1); }
+.wm-reveal .r { transform: translateY(6px); transition: opacity 320ms cubic-bezier(0.22,1,0.36,1), transform 360ms cubic-bezier(0.22,1,0.36,1); }
+.nav-l.wm-reveal .f:first-child { transition-delay: 140ms; }
+.nav-l.wm-reveal .r              { transition-delay: 320ms; }
+.nav-l.wm-reveal .f:last-child  { transition-delay: 520ms; }
+.foot-wm.wm-reveal .f:first-child { transition-delay: 0ms; }
+.foot-wm.wm-reveal .r              { transition-delay: 220ms; }
+.foot-wm.wm-reveal .f:last-child  { transition-delay: 440ms; }
+.wm-reveal.is-in .f { opacity: 0.22; transform: none; }
+.wm-reveal.is-in .r { opacity: 1;    transform: none; }
+@media (prefers-reduced-motion:reduce) {
+  .wm-reveal .f, .wm-reveal .r { opacity: unset; transform: none; transition: none; }
+  .wm-reveal .f { opacity: 0.22; }
+  .wm-reveal .r { opacity: 1; }
+}
+
 /* MASTHEAD — newspaper dateline strip above the nav */
 .masthead{background:var(--cream);border-bottom:0.5px solid var(--rule);font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);}
 .masthead-inner{max-width:1440px;margin:0 auto;padding:10px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
@@ -264,12 +285,23 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 .ch-card:hover .ch-cta{opacity:0.92;gap:20px;}
 .ch-cta .arr{font-family:var(--serif);font-size:14px;}
 
-/* FOOTER SOCIALS */
+/* FOOTER — editorial colophon */
 .footer-band{background:var(--cream);border-top:0.5px solid var(--rule);}
-.foot-grid{padding:72px 48px 32px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 3fr;gap:80px;}
-.foot-wm{font-family:var(--serif);font-size:48px;letter-spacing:-0.025em;line-height:0.9;color:var(--ink);margin-bottom:24px;}
+.foot-hero{max-width:1200px;margin:0 auto;padding:96px 48px 48px;display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start;}
+.foot-wm{font-family:var(--serif);font-size:clamp(56px,9vw,128px);letter-spacing:-0.03em;line-height:0.86;color:var(--ink);}
 .foot-wm .f{opacity:0.22;}
-.foot-about{font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--mid);max-width:40ch;}
+.foot-about{font-family:var(--mono);font-size:13px;line-height:1.85;color:var(--mid);max-width:38ch;padding-top:24px;}
+.foot-about em{font-family:var(--serif);font-style:italic;color:var(--amber);}
+
+.colophon{max-width:1200px;margin:0 auto;padding:32px 48px;border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);}
+.colophon-k{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 48px;font-family:var(--mono);}
+.col-item{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;}
+.col-item dt{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--meta);white-space:nowrap;}
+.col-item dd{font-size:12px;line-height:1.55;color:var(--ink);}
+
+.footer-socials{max-width:1200px;margin:0 auto;padding:48px 48px 24px;}
+.fs-k{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
 .socials{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}
 .social{background:var(--surface);border:0.5px solid var(--rule);padding:20px 16px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.15s;}
 .social:hover{border-color:var(--amber);}
@@ -277,7 +309,7 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 .social .s-v{font-family:var(--serif);font-size:16px;color:var(--ink);letter-spacing:-0.01em;}
 .social:hover .s-v{color:var(--amber);}
 
-.foot-bottom{padding:28px 48px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);border-top:0.5px solid var(--rule);}
+.foot-bottom{max-width:1200px;margin:0 auto;padding:24px 48px 48px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);border-top:0.5px solid var(--rule);margin-top:32px;}
 .foot-bottom .credit{color:var(--ink);}
 
 @media (max-width:900px){
@@ -302,10 +334,13 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
   .when-card .n{font-size:56px;}
   .channels{padding:56px 0;grid-template-columns:1fr;}
   .ch-card{padding:28px;min-height:0;}
-  .foot-grid{padding:48px 24px 24px;grid-template-columns:1fr;gap:40px;}
-  .foot-wm{font-size:36px;}
+  .foot-hero{padding:56px 24px 32px;grid-template-columns:1fr;gap:24px;}
+  .foot-wm{font-size:56px;}
+  .colophon{padding:28px 24px;}
+  .col-grid{grid-template-columns:1fr;gap:16px 32px;}
+  .footer-socials{padding:32px 24px 20px;}
   .socials{grid-template-columns:1fr 1fr;}
-  .foot-bottom{padding:20px 24px;flex-direction:column;gap:12px;}
+  .foot-bottom{padding:20px 24px 32px;flex-direction:column;gap:12px;}
 }
 @media (max-width:480px){
   .nav{padding:14px 20px;}
@@ -336,10 +371,11 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 </div>
 
 <nav class="nav">
-  <a href="/" class="nav-l"><span class="f">The</span>Vibe<span class="f">Founder</span></a>
+  <a href="/" class="nav-l"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></a>
   <div class="status"><span class="dot"></span>Build Live &middot; Sunday 21:00 IST</div>
   <div class="nav-r">
     <a href="/skills/">Skills</a>
+    <a href="/sessions/">Sessions</a>
     <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a>
     <a href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">Instagram</a>
   </div>
@@ -692,39 +728,87 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 
 <!-- FOOTER -->
 <div class="footer-band">
-  <div class="foot-grid">
-    <div>
-      <div class="foot-wm"><span class="f">The</span>Vibe<span class="f">Founder</span></div>
-      <p class="foot-about">One founder running a company with agents. Watch the process, not the pitch. Live every Sunday.</p>
+
+  <!-- wordmark + about -->
+  <div class="foot-hero">
+    <div class="foot-wm" id="foot-wm"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div>
+    <p class="foot-about">One founder running a company with agents. Watch the process, not the pitch. <em>Live every Sunday.</em></p>
+  </div>
+
+  <!-- Magazine-style colophon -->
+  <div class="colophon">
+    <div class="colophon-k"><span class="dot"></span>Colophon</div>
+    <div class="col-grid">
+      <dl class="col-item"><dt>Issue</dt><dd>Vol 01 &middot; No 04 &middot; Apr 2026</dd></dl>
+      <dl class="col-item"><dt>Editor</dt><dd>Aj Yadav</dd></dl>
+      <dl class="col-item"><dt>Agents</dt><dd>Claude Opus &middot; Sonnet &middot; Gemini</dd></dl>
+      <dl class="col-item"><dt>Set in</dt><dd>DM Serif Display &middot; Geist Mono &middot; Space Mono</dd></dl>
+      <dl class="col-item"><dt>Stack</dt><dd>Cloudflare Pages &middot; Workers &middot; R2 &middot; KV</dd></dl>
+      <dl class="col-item"><dt>Shipped</dt><dd>Sunday 21:00 IST &middot; Session 29</dd></dl>
+      <dl class="col-item"><dt>Source</dt><dd><a href="https://github.com/TheVibeFounder/skills" target="_blank" rel="noopener" style="border-bottom:0.5px solid var(--rule-strong);padding-bottom:1px;">github.com/TheVibeFounder/skills</a></dd></dl>
+      <dl class="col-item"><dt>License</dt><dd>MIT &middot; reuse encouraged</dd></dl>
+      <dl class="col-item"><dt>Home</dt><dd>Delhi &middot; California &middot; the internet</dd></dl>
     </div>
+  </div>
+
+  <!-- Socials grid -->
+  <div class="footer-socials">
+    <div class="fs-k"><span class="dot"></span>Contact</div>
     <div class="socials">
       <a class="social" href="https://letter.thevibefounder.com" target="_blank" rel="noopener">
-        <span class="s-k">Substack</span>
-        <span class="s-v">letter.thevibefounder.com</span>
+        <span class="s-k">Substack</span><span class="s-v">letter.thevibefounder.com</span>
       </a>
       <a class="social" href="https://twitter.com/thevibefounder" target="_blank" rel="noopener">
-        <span class="s-k">Twitter · X</span>
-        <span class="s-v">@thevibefounder</span>
+        <span class="s-k">Twitter &middot; X</span><span class="s-v">@thevibefounder</span>
       </a>
       <a class="social" href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">
-        <span class="s-k">Instagram</span>
-        <span class="s-v">@thevibefounder</span>
+        <span class="s-k">Instagram</span><span class="s-v">@thevibefounder</span>
       </a>
       <a class="social" href="https://youtube.com/@thevibefounder" target="_blank" rel="noopener">
-        <span class="s-k">YouTube</span>
-        <span class="s-v">@thevibefounder</span>
+        <span class="s-k">YouTube</span><span class="s-v">@thevibefounder</span>
       </a>
       <a class="social" href="https://linkedin.com/in/yadavajay" target="_blank" rel="noopener">
-        <span class="s-k">LinkedIn</span>
-        <span class="s-v">in/yadavajay</span>
+        <span class="s-k">LinkedIn</span><span class="s-v">in/yadavajay</span>
       </a>
     </div>
   </div>
+
   <div class="foot-bottom">
-    <div>© 2026 Aj Yadav · TheVibeFounder</div>
-    <div class="credit">Forbes 30 Under 30 · Consumer · 2017</div>
+    <div>&copy; 2026 Aj Yadav &middot; TheVibeFounder</div>
+    <div class="credit">Forbes 30 Under 30 &middot; Consumer &middot; 2017</div>
   </div>
 </div>
 
+<script>
+// ═══════════════════════════════════════════════════════════════
+// WORDMARK REVEAL — brand rule as motion
+// "The" + "Founder" dim to 18%, "Vibe" slams in at full opacity.
+// Nav wordmark: once per browser session (sessionStorage).
+// Footer wordmark: once per scroll-into-view.
+// ═══════════════════════════════════════════════════════════════
+(function(){
+  try {
+    var nav = document.querySelector('.nav-l');
+    if (nav && !sessionStorage.getItem('tvf-wm-played')) {
+      nav.classList.add('wm-reveal');
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){ nav.classList.add('is-in'); });
+      });
+      sessionStorage.setItem('tvf-wm-played', '1');
+      setTimeout(function(){ nav.classList.remove('wm-reveal'); nav.classList.remove('is-in'); }, 1600);
+    }
+    var foot = document.getElementById('foot-wm');
+    if (foot && 'IntersectionObserver' in window) {
+      foot.classList.add('wm-reveal');
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { foot.classList.add('is-in'); io.disconnect(); }
+        });
+      }, { threshold: 0.4 });
+      io.observe(foot);
+    }
+  } catch(e){}
+})();
+</script>
 </body>
 </html>

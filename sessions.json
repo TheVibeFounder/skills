@@ -1,0 +1,32 @@
+{
+  "notes": "One row per Build Live session. Status: 'upcoming' | 'live' | 'shipped' | 'canceled'. Optional fields: shipped (text), skill_slug (links to /skills/<slug>/), video (full URL), notes_url (full URL).",
+  "sessions": [
+    {
+      "n": 29,
+      "date": "2026-04-27",
+      "title": "Ship the TVF skills directory",
+      "status": "upcoming",
+      "shipped": null,
+      "skill_slug": null,
+      "video": null
+    },
+    {
+      "n": 28,
+      "date": "2026-04-20",
+      "title": "The News Drop — a single-slide Instagram format",
+      "status": "shipped",
+      "shipped": "thevibefounder-social-insta-slide-skill-01-apr-21",
+      "skill_slug": "news-drop",
+      "video": null
+    },
+    {
+      "n": 27,
+      "date": "2026-04-13",
+      "title": "The Shift Carousel — 10-slide narrative skill",
+      "status": "shipped",
+      "shipped": "tvf-shift-carousel",
+      "skill_slug": null,
+      "video": null
+    }
+  ]
+}
