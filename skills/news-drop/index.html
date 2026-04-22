@@ -353,6 +353,312 @@ code{font-family:var(--mono);background:rgba(240,154,26,0.1);color:#8A5200;paddi
 
 </main>
 
+<!-- ═════════════ INTERACTIVE PLAYGROUND ═════════════ -->
+<div class="playground-wrap">
+  <section class="playground" id="playground">
+    <div class="pg-head">
+      <div class="pg-k"><span class="d"></span>Try it live</div>
+      <h2>Render your own <span class="it">News Drop</span>.</h2>
+      <p>Type your copy on the left — the slide updates in real time. When it looks right, download a pixel-perfect 1440×1800 PNG. No signup. No watermark. Same chrome the skill ships with.</p>
+    </div>
+
+    <div class="pg-grid">
+      <!-- INPUTS -->
+      <form class="pg-inputs" id="pg-form" onsubmit="return false;">
+        <div class="pg-group">
+          <label class="pg-label" for="pg-headline">Headline <span class="hint">&#8804; 6 words</span></label>
+          <input class="pg-input" id="pg-headline" maxlength="80" value="2026 feels familiar." autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="pg-group">
+          <label class="pg-label" for="pg-spotlight">Spotlight word <span class="hint">wraps in teal brackets</span></label>
+          <input class="pg-input" id="pg-spotlight" maxlength="24" value="familiar" autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="pg-group">
+          <label class="pg-label" for="pg-subhead">Subhead <span class="hint">&#8804; 2 lines &middot; 90 chars</span></label>
+          <textarea class="pg-textarea" id="pg-subhead" maxlength="200" rows="2" spellcheck="false">Most people think AI is still a "tool." But the vibe has shifted.</textarea>
+        </div>
+
+        <div class="pg-row">
+          <div class="pg-group">
+            <label class="pg-label" for="pg-anchor">Anchor</label>
+            <input class="pg-input" id="pg-anchor" maxlength="8" value="2026" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="pg-group">
+            <label class="pg-label" for="pg-caption">Anchor caption</label>
+            <input class="pg-input" id="pg-caption" maxlength="40" value="THE YEAR IT SHIFTS" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+
+        <div class="pg-group">
+          <label class="pg-label" for="pg-marg">Marginalia note <span class="hint">one quiet aside</span></label>
+          <input class="pg-input" id="pg-marg" maxlength="80" value="Something already shifted." autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="pg-row">
+          <div class="pg-group">
+            <label class="pg-label" for="pg-issue">Issue &#8470;</label>
+            <input class="pg-input pg-number" id="pg-issue" maxlength="3" value="001" inputmode="numeric" autocomplete="off">
+          </div>
+          <div class="pg-group">
+            <label class="pg-label">Mode</label>
+            <div class="pg-seg" role="group" aria-label="Slide mode">
+              <button type="button" id="pg-mode-light" aria-pressed="true">Light</button>
+              <button type="button" id="pg-mode-dark"  aria-pressed="false">Dark</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pg-actions">
+          <button type="button" class="pg-btn" id="pg-download">
+            <span>Download PNG</span><span class="arr">&darr;</span>
+          </button>
+          <button type="button" class="pg-btn ghost" id="pg-share">
+            <span>Copy share link</span><span class="arr">&#8599;</span>
+          </button>
+        </div>
+        <div class="pg-status" id="pg-status" aria-live="polite"></div>
+      </form>
+
+      <!-- PREVIEW -->
+      <div class="pg-preview">
+        <div class="pg-stage-label">
+          <span>Preview</span>
+          <span class="res">1440 &times; 1800 &middot; 4:5</span>
+        </div>
+        <div class="pg-stage">
+          <div class="pg-stage-inner" id="pg-stage-inner">
+            <div class="tvf-slide" id="tvf-slide">
+              <div class="cartouche tl"></div><div class="cartouche tr"></div>
+              <div class="cartouche bl"></div><div class="cartouche br"></div>
+              <div class="frame">
+                <div class="field-note">
+                  <div class="fn1"><span id="sl-fn1"></span></div>
+                  <div class="fn2"><span id="sl-fn2"></span></div>
+                </div>
+                <div class="rail">
+                  <div class="rail-dot"></div>
+                  <div class="rail-rule"></div>
+                  <div class="rail-label">Shift</div>
+                </div>
+                <div class="content">
+                  <div class="headline" id="sl-headline"></div>
+                  <div class="subhead" id="sl-subhead"></div>
+                  <div class="anchor-block">
+                    <span class="anchor-word" id="sl-anchor"></span>
+                    <div class="anchor-divider"></div>
+                    <span class="anchor-caption" id="sl-caption"></span>
+                  </div>
+                  <div class="marg-note" id="sl-marg"></div>
+                </div>
+              </div>
+              <div class="foot-row">
+                <div class="handle"><strong>@thevibefounder</strong>Instagram</div>
+                <div class="stamp">
+                  <div class="stamp-n"><span id="sl-stamp-n">01</span><span class="sep">&#9642;</span>01</div>
+                  <div class="stamp-label">News Drop</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pg-meta">
+          <span>Canvas<strong>1440 &times; 1800</strong></span>
+          <span>Font<strong>Space Mono</strong></span>
+          <span>Accent<strong>#45CA9F</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+<script>
+(function(){
+  // ────────────────────────────────────────────────────────────────
+  // TVF News Drop Playground — live preview + PNG export
+  // Pure DOM mutation (no innerHTML) — every input is text-node safe.
+  // ────────────────────────────────────────────────────────────────
+
+  var F = {
+    headline:  document.getElementById('pg-headline'),
+    spotlight: document.getElementById('pg-spotlight'),
+    subhead:   document.getElementById('pg-subhead'),
+    anchor:    document.getElementById('pg-anchor'),
+    caption:   document.getElementById('pg-caption'),
+    marg:      document.getElementById('pg-marg'),
+    issue:     document.getElementById('pg-issue'),
+  };
+  var S = {
+    headline: document.getElementById('sl-headline'),
+    subhead:  document.getElementById('sl-subhead'),
+    anchor:   document.getElementById('sl-anchor'),
+    caption:  document.getElementById('sl-caption'),
+    marg:     document.getElementById('sl-marg'),
+    fn1:      document.getElementById('sl-fn1'),
+    fn2:      document.getElementById('sl-fn2'),
+    stampN:   document.getElementById('sl-stamp-n'),
+  };
+  var slide = document.getElementById('tvf-slide');
+  var stageInner = document.getElementById('pg-stage-inner');
+  var modeLight = document.getElementById('pg-mode-light');
+  var modeDark  = document.getElementById('pg-mode-dark');
+  var btnDown   = document.getElementById('pg-download');
+  var btnShare  = document.getElementById('pg-share');
+  var status    = document.getElementById('pg-status');
+
+  var mode = 'light';
+
+  // Clears a node by removing all children (DOM-safe).
+  function clearNode(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+
+  // Renders the headline: wraps the first case-insensitive match of
+  // `spotlight` in a <span class="spotlight"> using createElement +
+  // text nodes — no HTML parsing, no XSS surface.
+  function renderHeadline(text, spot) {
+    clearNode(S.headline);
+    var t = text == null ? '' : String(text);
+    var s = (spot == null ? '' : String(spot)).trim();
+    if (!s) { S.headline.appendChild(document.createTextNode(t)); return; }
+    var lower = t.toLowerCase();
+    var idx = lower.indexOf(s.toLowerCase());
+    if (idx < 0) { S.headline.appendChild(document.createTextNode(t)); return; }
+    var before = t.slice(0, idx);
+    var match  = t.slice(idx, idx + s.length);
+    var after  = t.slice(idx + s.length);
+    if (before) S.headline.appendChild(document.createTextNode(before));
+    var span = document.createElement('span');
+    span.className = 'spotlight';
+    span.appendChild(document.createTextNode(match));
+    S.headline.appendChild(span);
+    if (after) S.headline.appendChild(document.createTextNode(after));
+  }
+
+  function padIssue(n) {
+    var num = parseInt(String(n || '').replace(/\D/g, ''), 10);
+    if (isNaN(num) || num < 1) num = 1;
+    if (num > 999) num = 999;
+    return String(num).padStart(3, '0');
+  }
+
+  function render() {
+    var issue = padIssue(F.issue.value);
+    renderHeadline(F.headline.value, F.spotlight.value);
+    S.subhead.textContent = F.subhead.value;
+    S.anchor.textContent  = F.anchor.value;
+    S.caption.textContent = F.caption.value;
+    S.marg.textContent    = F.marg.value;
+    S.fn1.textContent     = 'FIELD NOTE \u2116 ' + issue + ' / NEWS DROP';
+    var year = new Date().getFullYear();
+    S.fn2.textContent     = 'ISSUE ' + issue.replace(/^0+/, '') + ' \u00b7 ' + year + ' \u00b7 @thevibefounder';
+    S.stampN.textContent  = issue.slice(-2);
+  }
+
+  function setMode(m) {
+    mode = m;
+    slide.classList.toggle('dark-slide', m === 'dark');
+    modeLight.setAttribute('aria-pressed', String(m === 'light'));
+    modeDark.setAttribute('aria-pressed',  String(m === 'dark'));
+  }
+
+  // Fit the 1440×1800 slide into its responsive container.
+  function fitScale() {
+    if (!stageInner) return;
+    var w = stageInner.clientWidth;
+    if (!w) return;
+    var scale = w / 1440;
+    slide.style.transform = 'scale(' + scale + ')';
+  }
+
+  Object.keys(F).forEach(function(k){
+    var el = F[k]; if (el) el.addEventListener('input', render);
+  });
+  modeLight.addEventListener('click', function(){ setMode('light'); });
+  modeDark.addEventListener('click', function(){ setMode('dark'); });
+
+  // ── PNG download — capture at native 1440×1800 ──
+  btnDown.addEventListener('click', async function(){
+    status.className = 'pg-status';
+    status.textContent = 'Rendering 1440 \u00d7 1800 PNG\u2026';
+    btnDown.disabled = true;
+    var prev = slide.style.transform;
+    slide.style.transform = 'scale(1)';
+    try {
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      await new Promise(function(r){ requestAnimationFrame(function(){ requestAnimationFrame(r); }); });
+      var png = await htmlToImage.toPng(slide, {
+        width: 1440, height: 1800, pixelRatio: 1, cacheBust: true,
+        backgroundColor: mode === 'dark' ? '#0D0D0D' : '#F0EDE8',
+      });
+      var headline = (F.headline.value || 'news-drop').toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48) || 'news-drop';
+      var a = document.createElement('a');
+      a.href = png; a.download = 'tvf-news-drop_' + headline + '.png';
+      document.body.appendChild(a); a.click(); a.remove();
+      status.className = 'pg-status ok';
+      status.textContent = 'Downloaded \u00b7 1440 \u00d7 1800 \u00b7 PNG';
+    } catch (err) {
+      console.error(err);
+      status.className = 'pg-status err';
+      status.textContent = 'Render failed. Try again, or download the skill and render locally.';
+    } finally {
+      slide.style.transform = prev;
+      fitScale();
+      btnDown.disabled = false;
+    }
+  });
+
+  // ── Share link — encode state in URL hash ──
+  function encodeState() {
+    var st = {
+      h: F.headline.value, s: F.spotlight.value, sub: F.subhead.value,
+      a: F.anchor.value, c: F.caption.value, m: F.marg.value,
+      i: F.issue.value, mode: mode,
+    };
+    try {
+      return '#d=' + encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(st)))));
+    } catch(e){ return ''; }
+  }
+  function decodeState() {
+    var h = location.hash || '';
+    var m = h.match(/#d=([^&]+)/);
+    if (!m) return null;
+    try {
+      return JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(m[1])))));
+    } catch(e) { return null; }
+  }
+  btnShare.addEventListener('click', async function(){
+    var link = location.origin + location.pathname + encodeState();
+    try {
+      await navigator.clipboard.writeText(link);
+      status.className = 'pg-status ok';
+      status.textContent = 'Share link copied.';
+    } catch(e) {
+      status.className = 'pg-status';
+      status.textContent = link;
+    }
+  });
+
+  // ── Restore from URL if present ──
+  var restored = decodeState();
+  if (restored) {
+    F.headline.value  = restored.h   || F.headline.value;
+    F.spotlight.value = restored.s   || F.spotlight.value;
+    F.subhead.value   = restored.sub || F.subhead.value;
+    F.anchor.value    = restored.a   || F.anchor.value;
+    F.caption.value   = restored.c   || F.caption.value;
+    F.marg.value      = restored.m   || F.marg.value;
+    F.issue.value     = restored.i   || F.issue.value;
+    setMode(restored.mode === 'dark' ? 'dark' : 'light');
+  }
+
+  render();
+  fitScale();
+  window.addEventListener('resize', fitScale);
+})();
+</script>
+
 <div class="sub-band-wrap">
   <section class="sub-band" id="subscribe">
     <div>
