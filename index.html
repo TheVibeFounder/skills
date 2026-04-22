@@ -27,6 +27,42 @@ html,body{background:var(--cream);color:var(--ink);font-family:var(--mono);font-
 a{color:inherit;text-decoration:none;}
 .container{max-width:1200px;margin:0 auto;padding:0 48px;}
 
+/* MASTHEAD — newspaper dateline strip above the nav */
+.masthead{background:var(--cream);border-bottom:0.5px solid var(--rule);font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);}
+.masthead-inner{max-width:1440px;margin:0 auto;padding:10px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
+.masthead-l{text-align:left;}
+.masthead-c{display:flex;align-items:center;gap:10px;justify-self:center;color:var(--amber);letter-spacing:0.22em;}
+.masthead-c .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;animation:m-pulse 2.8s cubic-bezier(0.4,0,0.2,1) infinite;}
+@keyframes m-pulse{
+  0%  {box-shadow:0 0 0 0 rgba(240,154,26,0.5);}
+  70% {box-shadow:0 0 0 8px rgba(240,154,26,0);}
+  100%{box-shadow:0 0 0 0 rgba(240,154,26,0);}
+}
+.masthead-r{text-align:right;}
+.masthead-r .est{color:var(--soft);}
+
+/* ON AIR state — flips the entire strip */
+.masthead.live{background:var(--amber);color:#0E0E0E;border-bottom-color:rgba(0,0,0,0.12);}
+.masthead.live .masthead-c{color:#0E0E0E;letter-spacing:0.26em;font-weight:500;}
+.masthead.live .masthead-c .dot{background:#0E0E0E;animation:m-pulse-dark 1.2s cubic-bezier(0.4,0,0.2,1) infinite;}
+@keyframes m-pulse-dark{
+  0%  {box-shadow:0 0 0 0 rgba(14,14,14,0.55);}
+  70% {box-shadow:0 0 0 7px rgba(14,14,14,0);}
+  100%{box-shadow:0 0 0 0 rgba(14,14,14,0);}
+}
+.masthead.live .masthead-l,.masthead.live .masthead-r,.masthead.live .masthead-r .est{color:rgba(0,0,0,0.75);}
+@media (max-width:900px){
+  .masthead-inner{padding:10px 24px;grid-template-columns:1fr auto;gap:12px;}
+  .masthead-r{display:none;}
+}
+@media (max-width:480px){
+  .masthead-inner{padding:8px 20px;font-size:9px;letter-spacing:0.14em;}
+  .masthead-l{font-size:9px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .masthead-c .dot{animation:none;}
+}
+
 /* NAV */
 .nav{display:flex;justify-content:space-between;align-items:center;padding:32px 48px;border-bottom:0.5px solid var(--rule);position:relative;}
 .nav-l{font-family:var(--serif);font-size:22px;letter-spacing:-0.025em;line-height:1;color:var(--ink);}
@@ -245,9 +281,18 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 </head>
 <body>
 
+<!-- MASTHEAD — newspaper dateline strip -->
+<div class="masthead" id="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-l" id="mast-l">VOL 01 &middot; NO 04 &middot; &mdash;</div>
+    <div class="masthead-c" id="mast-c"><span class="dot"></span><span id="mast-state">Loading session&hellip;</span></div>
+    <div class="masthead-r"><span>thevibefounder.com</span> &middot; <span class="est">EST. 2026</span></div>
+  </div>
+</div>
+
 <nav class="nav">
   <a href="/" class="nav-l"><span class="f">The</span>Vibe<span class="f">Founder</span></a>
-  <div class="status"><span class="dot"></span>System active · Session 29 · Sunday 21:00 IST</div>
+  <div class="status"><span class="dot"></span>Build Live &middot; Sunday 21:00 IST</div>
   <div class="nav-r">
     <a href="/skills/">Skills</a>
     <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a>
@@ -276,6 +321,97 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
     </div>
   </div>
 </header>
+
+<script>
+// ═════════════════════════════════════════════════════════════════
+// MASTHEAD — newspaper dateline + live session state + countdown
+// Session recurrence: every Sunday at 21:00 IST (UTC+5:30) = 15:30 UTC.
+// Live window: 2 hours. Outside that, show the countdown.
+// Issue/volume/session number sourced from /today.json.
+// ═════════════════════════════════════════════════════════════════
+(function(){
+  var mast  = document.getElementById('masthead');
+  var left  = document.getElementById('mast-l');
+  var state = document.getElementById('mast-state');
+  if (!mast || !left || !state) return;
+
+  var META = { volume: 1, issue: 4, session: 29 };
+
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  // Format dateline: "TUE · APR 22 · 2026"
+  function dateline() {
+    var d = new Date();
+    var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+    var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    return days[d.getDay()] + ' \u00b7 ' + months[d.getMonth()] + ' ' + d.getDate() + ' \u00b7 ' + d.getFullYear();
+  }
+
+  // Next Sunday 15:30 UTC (= 21:00 IST). Returns a Date in the future.
+  function nextSessionStartUTC(now) {
+    // Work in UTC.
+    var y = now.getUTCFullYear(), mo = now.getUTCMonth(), d = now.getUTCDate();
+    var dow = now.getUTCDay();              // 0 = Sunday
+    var daysUntilSunday = (7 - dow) % 7;    // 0 if today is Sunday
+    var candidate = new Date(Date.UTC(y, mo, d + daysUntilSunday, 15, 30, 0));
+    if (candidate.getTime() <= now.getTime()) {
+      candidate = new Date(Date.UTC(y, mo, d + daysUntilSunday + 7, 15, 30, 0));
+    }
+    return candidate;
+  }
+
+  function diffHuman(ms) {
+    if (ms < 0) ms = 0;
+    var s = Math.floor(ms / 1000);
+    var d = Math.floor(s / 86400); s -= d * 86400;
+    var h = Math.floor(s / 3600);  s -= h * 3600;
+    var m = Math.floor(s / 60);
+    if (d > 0) return d + 'd ' + h + 'h ' + pad(m) + 'm';
+    if (h > 0) return h + 'h ' + pad(m) + 'm';
+    return pad(m) + 'm';
+  }
+
+  function isLiveNow(now) {
+    // Live window: Sunday 15:30 UTC → Sunday 17:30 UTC (2 hours).
+    if (now.getUTCDay() !== 0) return false;
+    var start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 15, 30, 0));
+    var end   = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+    return now >= start && now < end;
+  }
+
+  function minutesLive(now) {
+    var start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 15, 30, 0));
+    return Math.max(0, Math.floor((now - start) / 60000));
+  }
+
+  function tick() {
+    var now = new Date();
+    left.textContent = 'VOL ' + pad(META.volume) + ' \u00b7 NO ' + pad(META.issue) + ' \u00b7 ' + dateline();
+    if (isLiveNow(now)) {
+      mast.classList.add('live');
+      state.textContent = 'ON AIR \u00b7 SESSION ' + META.session + ' \u00b7 LIVE ' + minutesLive(now) + 'M IN';
+    } else {
+      mast.classList.remove('live');
+      var next = nextSessionStartUTC(now);
+      state.textContent = 'SESSION ' + META.session + ' \u00b7 NEXT IN ' + diffHuman(next - now);
+    }
+  }
+
+  // Load meta from today.json, then render.
+  fetch('/today.json', { cache: 'no-cache' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (d) {
+        if (typeof d.volume === 'number')  META.volume  = d.volume;
+        if (typeof d.issue  === 'number')  META.issue   = d.issue;
+        if (typeof d.session === 'number') META.session = d.session;
+      }
+      tick();
+      setInterval(tick, 30 * 1000);
+    })
+    .catch(function(){ tick(); setInterval(tick, 30 * 1000); });
+})();
+</script>
 
 <!-- TODAY — live strip -->
 <div class="today-wrap" id="today-band">

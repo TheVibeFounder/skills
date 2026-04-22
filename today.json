@@ -1,6 +1,8 @@
 {
   "updated": "2026-04-22",
   "session": 29,
+  "issue": 4,
+  "volume": 1,
   "rows": [
     { "label": "Building",  "text": "clawship billing refactor" },
     { "label": "Shipping",  "text": "tvf-news-drop · v2026.04.21" },
