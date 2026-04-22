@@ -190,6 +190,51 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
   .stopper-h{line-height:1.05;}
 }
 
+/* VENTURES — active + past */
+.ventures{padding:96px 0;}
+.v-head{max-width:760px;margin-bottom:56px;}
+.v-k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.v-head h2{font-family:var(--serif);font-size:clamp(32px,5vw,56px);line-height:1.02;letter-spacing:-0.025em;color:var(--ink);margin-bottom:20px;}
+.v-head h2 .it{font-style:italic;color:var(--amber);}
+.v-head p{font-family:var(--mono);font-size:14px;line-height:1.85;color:var(--mid);max-width:56ch;}
+
+.ventures-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px;}
+.venture{background:var(--surface);border:0.5px solid var(--rule);padding:48px 40px;display:flex;flex-direction:column;min-height:420px;color:var(--ink);transition:border-color 0.2s;position:relative;overflow:hidden;}
+.venture:hover{border-color:var(--rule-strong);}
+.venture::before{content:'';position:absolute;top:0;left:0;width:60px;height:0.5px;background:var(--amber);}
+.v-status{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:32px;}
+.v-status .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+.v-name{font-family:var(--serif);font-size:72px;line-height:0.95;letter-spacing:-0.03em;color:var(--ink);margin-bottom:24px;}
+.v-name .tld{color:var(--amber);font-style:italic;}
+.v-tag{font-family:var(--mono);font-size:15px;line-height:1.75;color:var(--mid);margin-bottom:32px;max-width:42ch;}
+.v-meta{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;font-size:11px;line-height:1.6;margin-bottom:32px;padding-top:24px;border-top:0.5px solid var(--rule);}
+.v-meta dt{letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);font-size:10px;padding-top:2px;}
+.v-meta dd{color:var(--ink);}
+.v-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;background:var(--ink);color:var(--cream);padding:14px 20px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;align-self:flex-start;margin-top:auto;transition:background 0.15s,gap 0.15s;min-width:220px;}
+.v-cta:hover{background:var(--amber);color:#0E0E0E;gap:20px;}
+.v-cta .arr{font-family:var(--serif);font-size:14px;}
+
+.ventures-past{background:var(--surface);border:0.5px solid var(--rule);padding:32px 40px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;}
+.vp-k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--meta);white-space:nowrap;}
+.vp-main{display:flex;flex-direction:column;gap:4px;}
+.vp-name{font-family:var(--serif);font-size:22px;letter-spacing:-0.01em;color:var(--ink);}
+.vp-desc{font-family:var(--mono);font-size:12px;color:var(--mid);line-height:1.7;}
+.vp-stamp{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);white-space:nowrap;text-align:right;}
+.vp-stamp strong{display:block;color:var(--ink);font-family:var(--serif);font-size:14px;text-transform:none;letter-spacing:-0.005em;font-weight:400;}
+
+@media (max-width:900px){
+  .ventures{padding:64px 0;}
+  .ventures-grid{grid-template-columns:1fr;}
+  .venture{padding:36px 28px;min-height:0;}
+  .v-name{font-size:52px;}
+  .ventures-past{grid-template-columns:1fr;gap:16px;padding:24px 28px;}
+  .vp-stamp{text-align:left;}
+}
+@media (max-width:480px){
+  .v-name{font-size:40px;}
+  .v-cta{width:100%;min-width:0;}
+}
+
 /* DARK SESSION BAND */
 .session-wrap{background:var(--dark);color:rgba(255,255,255,0.85);}
 .session{padding:96px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;}
@@ -570,6 +615,56 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
     </div>
   </section>
 </div>
+
+<!-- VENTURES — active + past -->
+<section class="container">
+  <div class="ventures">
+    <div class="v-head">
+      <div class="v-k"><span class="dot"></span>Ventures &middot; 2 active</div>
+      <h2>What I'm shipping <span class="it">right now</span>.</h2>
+      <p>Both built solo with agents. Both paying customers. Each a live experiment in running a real business with a team of one.</p>
+    </div>
+
+    <div class="ventures-grid">
+      <article class="venture">
+        <div class="v-status"><span class="dot"></span>Live &middot; Private beta</div>
+        <div class="v-name">clawship<span class="tld">.dev</span></div>
+        <p class="v-tag">Managed deployment layer for Claude Code agents. Ship production agents without writing infrastructure &mdash; auth, sessions, observability, sandboxing, all solved.</p>
+        <dl class="v-meta">
+          <dt>Role</dt><dd>Founder &middot; Building</dd>
+          <dt>Stage</dt><dd>Private beta, invite-only</dd>
+          <dt>Focus</dt><dd>Early teams shipping AI agents to production</dd>
+        </dl>
+        <a class="v-cta" href="https://clawship.dev" target="_blank" rel="noopener">
+          <span>clawship.dev</span><span class="arr">&#8599;</span>
+        </a>
+      </article>
+
+      <article class="venture">
+        <div class="v-status"><span class="dot"></span>Live &middot; Public beta</div>
+        <div class="v-name">usevoice<span class="tld">.xyz</span></div>
+        <p class="v-tag">Voice-first capture and coaching. Talk through your day, get structured notes and reflections back. Built for operators who think out loud.</p>
+        <dl class="v-meta">
+          <dt>Role</dt><dd>Founder</dd>
+          <dt>Stage</dt><dd>Public beta &middot; paid tiers live</dd>
+          <dt>Focus</dt><dd>Builders, coaches, exec operators</dd>
+        </dl>
+        <a class="v-cta" href="https://usevoice.xyz" target="_blank" rel="noopener">
+          <span>usevoice.xyz</span><span class="arr">&#8599;</span>
+        </a>
+      </article>
+    </div>
+
+    <div class="ventures-past">
+      <div class="vp-k">Past</div>
+      <div class="vp-main">
+        <span class="vp-name">Simplified AI</span>
+        <span class="vp-desc">Co-founder &middot; scaled to 20M users &middot; backed by Khosla Ventures &middot; Craft Ventures</span>
+      </div>
+      <div class="vp-stamp">Acquired / exit<strong>2024</strong></div>
+    </div>
+  </div>
+</section>
 
 <!-- CHANNEL CARDS -->
 <section class="container">
