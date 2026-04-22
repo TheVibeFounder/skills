@@ -52,6 +52,41 @@ h1.thesis{font-family:var(--serif);font-size:84px;line-height:0.98;letter-spacin
 h1.thesis .it{font-style:italic;color:var(--amber);}
 .lede{font-family:var(--mono);font-size:17px;line-height:1.6;color:var(--mid);max-width:64ch;margin-bottom:48px;}
 
+/* TODAY — live "telegram" strip */
+.today-wrap{border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);background:var(--cream);}
+.today{max-width:1200px;margin:0 auto;padding:24px 48px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;}
+.today-tag{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;white-space:nowrap;}
+.today-tag .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;box-shadow:0 0 0 0 rgba(240,154,26,0.5);animation:tvf-pulse 2.4s cubic-bezier(0.4,0,0.2,1) infinite;}
+@keyframes tvf-pulse{
+  0%  {box-shadow:0 0 0 0 rgba(240,154,26,0.45);}
+  70% {box-shadow:0 0 0 10px rgba(240,154,26,0);}
+  100%{box-shadow:0 0 0 0 rgba(240,154,26,0);}
+}
+.today-rows{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-family:var(--mono);font-size:13px;overflow:hidden;}
+.today-row{display:flex;gap:12px;align-items:baseline;color:var(--ink);opacity:0;transform:translateY(6px);transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),transform 500ms cubic-bezier(0.22,1,0.36,1);}
+.today-row.is-in{opacity:1;transform:none;}
+.today-row .k{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--meta);flex-shrink:0;min-width:64px;}
+.today-row .v{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.today-row .v .caret{display:inline-block;width:0.6em;height:1em;background:var(--amber);margin-left:6px;vertical-align:-0.12em;animation:tvf-caret 1s steps(2) infinite;}
+@keyframes tvf-caret{50%{opacity:0;}}
+.today-stamp{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);white-space:nowrap;}
+.today-stamp strong{color:var(--ink);font-weight:400;font-family:var(--serif);font-size:14px;letter-spacing:-0.005em;text-transform:none;margin-left:6px;}
+@media (max-width:900px){
+  .today{padding:20px 24px;grid-template-columns:1fr;gap:16px;}
+  .today-rows{grid-template-columns:1fr;gap:10px;}
+  .today-stamp{justify-self:start;}
+}
+@media (max-width:480px){
+  .today{padding:18px 20px;}
+  .today-row{font-size:12px;}
+  .today-row .k{min-width:56px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .today-tag .pulse{animation:none;}
+  .today-row{opacity:1;transform:none;transition:none;}
+  .today-row .v .caret{animation:none;}
+}
+
 /* MANIFESTO — flush-left amber rule like a pull-quote block */
 .manifesto{padding:48px 0 80px;}
 .manifesto .body{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;max-width:920px;}
@@ -241,6 +276,51 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
     </div>
   </div>
 </header>
+
+<!-- TODAY — live strip -->
+<div class="today-wrap" id="today-band">
+  <div class="today">
+    <div class="today-tag"><span class="pulse"></span>Today</div>
+    <div class="today-rows" id="today-rows"></div>
+    <div class="today-stamp">Updated<strong id="today-stamp">—</strong></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var el = document.getElementById('today-rows');
+  var stamp = document.getElementById('today-stamp');
+  if (!el) return;
+  fetch('/today.json', { cache: 'no-cache' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || !d.rows) return;
+      var frag = document.createDocumentFragment();
+      d.rows.forEach(function(row, i){
+        var div = document.createElement('div');
+        div.className = 'today-row';
+        div.style.transitionDelay = (60 * i) + 'ms';
+        var k = document.createElement('span'); k.className = 'k'; k.textContent = row.label;
+        var v = document.createElement('span'); v.className = 'v'; v.textContent = row.text;
+        if (i === 0) {
+          var c = document.createElement('span'); c.className = 'caret'; c.setAttribute('aria-hidden','true');
+          v.appendChild(c);
+        }
+        div.appendChild(k); div.appendChild(v);
+        frag.appendChild(div);
+      });
+      el.appendChild(frag);
+      if (d.updated && stamp) {
+        var dt = new Date(d.updated + 'T00:00:00Z');
+        stamp.textContent = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      }
+      requestAnimationFrame(function(){
+        el.querySelectorAll('.today-row').forEach(function(r){ r.classList.add('is-in'); });
+      });
+    })
+    .catch(function(){});
+})();
+</script>
 
 <div class="rule"></div>
 
