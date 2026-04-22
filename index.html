@@ -27,25 +27,81 @@ html,body{background:var(--cream);color:var(--ink);font-family:var(--mono);font-
 a{color:inherit;text-decoration:none;}
 .container{max-width:1200px;margin:0 auto;padding:0 48px;}
 
-/* WORDMARK REVEAL — brand-rule-as-motion
-   "The" and "Founder" fade to 18% opacity, "Vibe" slams in at 100%.
-   Runs once per session on nav, and once when footer scrolls in. */
+/* ═══════════════════════════════════════════════════════════
+   MOTION SYSTEM — "classy minimal" defaults
+   - Single easing curve: --ease (editorial ease-out)
+   - Slow, opacity-dominant; transform deltas stay under 6px
+   - Never bounce, never flash
+   ═══════════════════════════════════════════════════════════ */
+:root { --ease: cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* WORDMARK REVEAL — brand rule expressed as tempo
+   "The" and "Founder" ease to 18% opacity; "Vibe" arrives at 100%
+   with a subtle letter-spacing breath (letters settle outward).
+   Runs once per session on nav; once when footer scrolls in. */
 .nav-l .f, .foot-wm .f { opacity: 0.22; }
+.nav-l .r, .foot-wm .r { letter-spacing: inherit; display: inline-block; }
 .wm-reveal .f, .wm-reveal .r { opacity: 0; }
-.wm-reveal .f { transform: translateY(6px); transition: opacity 360ms cubic-bezier(0.22,1,0.36,1), transform 420ms cubic-bezier(0.22,1,0.36,1); }
-.wm-reveal .r { transform: translateY(6px); transition: opacity 320ms cubic-bezier(0.22,1,0.36,1), transform 360ms cubic-bezier(0.22,1,0.36,1); }
-.nav-l.wm-reveal .f:first-child { transition-delay: 140ms; }
-.nav-l.wm-reveal .r              { transition-delay: 320ms; }
-.nav-l.wm-reveal .f:last-child  { transition-delay: 520ms; }
+.wm-reveal .f {
+  transform: translateY(4px);
+  transition: opacity 1200ms var(--ease), transform 1400ms var(--ease);
+}
+.wm-reveal .r {
+  transform: translateY(4px);
+  letter-spacing: -0.06em;
+  transition: opacity 1100ms var(--ease),
+              transform 1400ms var(--ease),
+              letter-spacing 1400ms var(--ease);
+}
+.nav-l.wm-reveal  .f:first-child { transition-delay: 80ms; }
+.nav-l.wm-reveal  .r              { transition-delay: 340ms; }
+.nav-l.wm-reveal  .f:last-child  { transition-delay: 640ms; }
 .foot-wm.wm-reveal .f:first-child { transition-delay: 0ms; }
-.foot-wm.wm-reveal .r              { transition-delay: 220ms; }
-.foot-wm.wm-reveal .f:last-child  { transition-delay: 440ms; }
+.foot-wm.wm-reveal .r              { transition-delay: 320ms; }
+.foot-wm.wm-reveal .f:last-child  { transition-delay: 640ms; }
 .wm-reveal.is-in .f { opacity: 0.22; transform: none; }
-.wm-reveal.is-in .r { opacity: 1;    transform: none; }
+.wm-reveal.is-in .r { opacity: 1; transform: none; letter-spacing: inherit; }
 @media (prefers-reduced-motion:reduce) {
-  .wm-reveal .f, .wm-reveal .r { opacity: unset; transform: none; transition: none; }
+  .wm-reveal .f, .wm-reveal .r { opacity: unset; transform: none; letter-spacing: inherit; transition: none; }
   .wm-reveal .f { opacity: 0.22; }
   .wm-reveal .r { opacity: 1; }
+}
+
+/* HERO — slow cascaded fade-up on first paint */
+.hero .eyebrow, .hero h1.thesis, .hero .lede, .hero .attrib, .hero .now-building, .hero .hero-stats {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 900ms var(--ease), transform 1100ms var(--ease);
+}
+.hero.is-in .eyebrow      { transition-delay:   0ms; }
+.hero.is-in h1.thesis     { transition-delay: 140ms; }
+.hero.is-in .lede         { transition-delay: 340ms; }
+.hero.is-in .attrib       { transition-delay: 520ms; }
+.hero.is-in .now-building { transition-delay: 640ms; }
+.hero.is-in .hero-stats   { transition-delay: 780ms; }
+.hero.is-in .eyebrow,
+.hero.is-in h1.thesis,
+.hero.is-in .lede,
+.hero.is-in .attrib,
+.hero.is-in .now-building,
+.hero.is-in .hero-stats { opacity: 1; transform: none; }
+@media (prefers-reduced-motion:reduce) {
+  .hero .eyebrow, .hero h1.thesis, .hero .lede, .hero .attrib, .hero .now-building, .hero .hero-stats {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
+/* VENTURES — scroll-in stagger */
+.venture {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 900ms var(--ease), transform 1100ms var(--ease);
+}
+.ventures-grid.is-in .venture:nth-child(1) { transition-delay:   0ms; }
+.ventures-grid.is-in .venture:nth-child(2) { transition-delay: 160ms; }
+.ventures-grid.is-in .venture { opacity: 1; transform: none; }
+@media (prefers-reduced-motion:reduce) {
+  .venture { opacity: 1; transform: none; transition: none; }
 }
 
 /* MASTHEAD — newspaper dateline strip above the nav */
@@ -53,10 +109,10 @@ a{color:inherit;text-decoration:none;}
 .masthead-inner{max-width:1440px;margin:0 auto;padding:10px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
 .masthead-l{text-align:left;}
 .masthead-c{display:flex;align-items:center;gap:10px;justify-self:center;color:var(--amber);letter-spacing:0.22em;}
-.masthead-c .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;animation:m-pulse 2.8s cubic-bezier(0.4,0,0.2,1) infinite;}
+.masthead-c .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;animation:m-pulse 4s var(--ease) infinite;}
 @keyframes m-pulse{
-  0%  {box-shadow:0 0 0 0 rgba(240,154,26,0.5);}
-  70% {box-shadow:0 0 0 8px rgba(240,154,26,0);}
+  0%  {box-shadow:0 0 0 0 rgba(240,154,26,0.4);}
+  70% {box-shadow:0 0 0 6px rgba(240,154,26,0);}
   100%{box-shadow:0 0 0 0 rgba(240,154,26,0);}
 }
 .masthead-r{text-align:right;}
@@ -100,11 +156,22 @@ a{color:inherit;text-decoration:none;}
 .eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:40px;}
 .attrib{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
 .attrib .div{display:inline-block;width:20px;height:0.5px;background:var(--rule-strong);}
-.now-building{font-family:var(--mono);font-size:12px;color:var(--mid);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.now-building{font-family:var(--mono);font-size:12px;color:var(--mid);display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:64px;}
 .now-building .nb-k{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);}
 .now-building a{border-bottom:0.5px solid var(--rule-strong);padding-bottom:2px;transition:border-color 0.15s,color 0.15s;}
 .now-building a:hover{color:var(--amber);border-color:var(--amber);}
 .now-building .nb-dot{color:var(--soft);}
+
+/* HERO — inline stat strip (replaces the old standalone stats section) */
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;padding-top:40px;border-top:0.5px solid var(--rule);max-width:880px;}
+.hero-stats .s{display:flex;flex-direction:column;gap:8px;}
+.hero-stats .n{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:0.9;letter-spacing:-0.02em;color:var(--ink);}
+.hero-stats .n .plus{color:var(--amber);font-style:italic;}
+.hero-stats .k{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);}
+.hero-stats .c{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--mid);}
+@media (max-width:900px){
+  .hero-stats{grid-template-columns:1fr;gap:20px;padding-top:28px;}
+}
 h1.thesis{font-family:var(--serif);font-size:84px;line-height:0.98;letter-spacing:-0.025em;color:var(--ink);margin-bottom:40px;max-width:20ch;}
 h1.thesis .it{font-style:italic;color:var(--amber);}
 .lede{font-family:var(--mono);font-size:17px;line-height:1.6;color:var(--mid);max-width:64ch;margin-bottom:48px;}
@@ -113,10 +180,10 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 .today-wrap{border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);background:var(--cream);}
 .today{max-width:1200px;margin:0 auto;padding:24px 48px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;}
 .today-tag{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;white-space:nowrap;}
-.today-tag .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;box-shadow:0 0 0 0 rgba(240,154,26,0.5);animation:tvf-pulse 2.4s cubic-bezier(0.4,0,0.2,1) infinite;}
+.today-tag .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;box-shadow:0 0 0 0 rgba(240,154,26,0.5);animation:tvf-pulse 4s var(--ease) infinite;}
 @keyframes tvf-pulse{
-  0%  {box-shadow:0 0 0 0 rgba(240,154,26,0.45);}
-  70% {box-shadow:0 0 0 10px rgba(240,154,26,0);}
+  0%  {box-shadow:0 0 0 0 rgba(240,154,26,0.35);}
+  70% {box-shadow:0 0 0 8px rgba(240,154,26,0);}
   100%{box-shadow:0 0 0 0 rgba(240,154,26,0);}
 }
 .today-rows{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-family:var(--mono);font-size:13px;overflow:hidden;}
@@ -124,8 +191,8 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 .today-row.is-in{opacity:1;transform:none;}
 .today-row .k{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--meta);flex-shrink:0;min-width:64px;}
 .today-row .v{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.today-row .v .caret{display:inline-block;width:0.6em;height:1em;background:var(--amber);margin-left:6px;vertical-align:-0.12em;animation:tvf-caret 1s steps(2) infinite;}
-@keyframes tvf-caret{50%{opacity:0;}}
+.today-row .v .caret{display:inline-block;width:0.6em;height:1em;background:var(--amber);margin-left:6px;vertical-align:-0.12em;animation:tvf-caret 1.4s ease-in-out infinite;}
+@keyframes tvf-caret{0%,40%{opacity:1;}70%,100%{opacity:0.2;}}
 .today-stamp{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);white-space:nowrap;}
 .today-stamp strong{color:var(--ink);font-weight:400;font-family:var(--serif);font-size:14px;letter-spacing:-0.005em;text-transform:none;margin-left:6px;}
 @media (max-width:900px){
@@ -555,39 +622,6 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- STATS -->
-<section class="container">
-  <div class="stats">
-    <div class="stat">
-      <div class="k">Users reached</div>
-      <div class="num">25M<span class="plus">+</span></div>
-      <div class="cap">Across companies &middot; built the old way.</div>
-    </div>
-    <div class="stat">
-      <div class="k">Monthly views</div>
-      <div class="num">15&ndash;20M</div>
-      <div class="cap">Builds, tools, workflows &middot; in public.</div>
-    </div>
-    <div class="stat">
-      <div class="k">Build Live sessions</div>
-      <div class="num">28</div>
-      <div class="cap">In 12 months &middot; unedited.</div>
-    </div>
-  </div>
-</section>
-
-<div class="rule"></div>
-
-<!-- WHAT I SEE -->
-<section class="container">
-  <div class="see">
-    <div class="label" style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;">What I see</div>
-    <div class="quote">The real question isn't what AI can do. It's which parts of a company were only valuable because execution used to be expensive.</div>
-  </div>
-</section>
-
 <!-- SCROLL-STOPPER -->
 <section class="stopper" aria-label="The first law" id="stopper">
   <div class="mark"><span class="dot"></span>The first law</div>
@@ -602,14 +636,36 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 </section>
 
 <script>
+// ═══════════════════════════════════════════════════════════════
+// MOTION ORCHESTRATION — classy, minimal, observer-driven
+// Hero fades in on first paint. Ventures + scroll-stopper stagger
+// in when they enter the viewport. All one-shot (disconnects).
+// ═══════════════════════════════════════════════════════════════
 (function(){
-  var s = document.getElementById('stopper');
-  if (!s) return;
-  if (!('IntersectionObserver' in window)) { s.classList.add('is-in'); return; }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if (e.isIntersecting) { s.classList.add('is-in'); io.disconnect(); } });
-  }, { threshold: 0.35 });
-  io.observe(s);
+  // Hero: first-paint reveal
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ hero.classList.add('is-in'); });
+    });
+  }
+
+  // Scroll-triggered reveals
+  var targets = [
+    { el: document.getElementById('stopper'),        threshold: 0.35 },
+    { el: document.querySelector('.ventures-grid'),  threshold: 0.25 },
+  ].filter(function(t){ return t.el; });
+
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function(t){ t.el.classList.add('is-in'); });
+    return;
+  }
+  targets.forEach(function(t){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { t.el.classList.add('is-in'); io.disconnect(); } });
+    }, { threshold: t.threshold });
+    io.observe(t.el);
+  });
 })();
 </script>
 
@@ -681,30 +737,6 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
       </div>
       <div class="vp-stamp">Acquired / exit<strong>2024</strong></div>
     </div>
-  </div>
-</section>
-
-<!-- CHANNEL CARDS -->
-<section class="container">
-  <div class="channels">
-    <a class="ch-card" href="/skills/">
-      <div class="k"><span class="dot"></span>Skills &middot; 01 live</div>
-      <h3>Claude Code skills that ship.</h3>
-      <p>Drop-in. No theory.</p>
-      <span class="ch-cta"><span>Browse skills</span><span class="arr">&rarr;</span></span>
-    </a>
-    <a class="ch-card" href="https://letter.thevibefounder.com" target="_blank" rel="noopener">
-      <div class="k"><span class="dot"></span>The Letter</div>
-      <h3>Session notes. Configs. What broke.</h3>
-      <p>One email per drop. Zero spam.</p>
-      <span class="ch-cta"><span>Read the letter</span><span class="arr">&rarr;</span></span>
-    </a>
-    <a class="ch-card" href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">
-      <div class="k"><span class="dot"></span>Daily signal</div>
-      <h3>Drops, hot takes, build clips.</h3>
-      <p>The feed between Sundays.</p>
-      <span class="ch-cta"><span>Follow @thevibefounder</span><span class="arr">&rarr;</span></span>
-    </a>
   </div>
 </section>
 
