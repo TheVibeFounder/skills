@@ -83,6 +83,42 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
 .col .k{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
 .col p{font-family:var(--mono);font-size:14px;line-height:1.85;color:var(--mid);}
 
+/* SCROLL-STOPPER */
+.stopper{position:relative;min-height:100vh;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:96px 48px;overflow:hidden;isolation:isolate;}
+.stopper::before,.stopper::after{content:'';position:absolute;left:48px;right:48px;height:0.5px;background:var(--rule);}
+.stopper::before{top:48px;} .stopper::after{bottom:48px;}
+.stopper .mark{position:absolute;top:64px;left:48px;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;}
+.stopper .colophon{position:absolute;bottom:64px;left:48px;right:48px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--soft);}
+.stopper-h{font-family:var(--serif);font-size:clamp(44px,9vw,128px);line-height:1.02;letter-spacing:-0.025em;color:var(--ink);text-align:center;max-width:17ch;margin:0;}
+.stopper-h .l1{display:block;opacity:0;transform:translateY(18px);transition:opacity 700ms cubic-bezier(0.22,1,0.36,1),transform 900ms cubic-bezier(0.22,1,0.36,1);}
+.stopper-h .l2{display:block;opacity:0;transform:translateY(18px);transition:opacity 700ms cubic-bezier(0.22,1,0.36,1) 180ms,transform 900ms cubic-bezier(0.22,1,0.36,1) 180ms;}
+.prod-wrap{position:relative;display:inline-block;}
+.prod{position:relative;font-style:italic;color:var(--amber);z-index:2;}
+.prod-ghost{position:absolute;inset:0;font-style:italic;color:rgba(240,154,26,0.14);transform:translate(6px,5px);pointer-events:none;z-index:1;opacity:0;transition:opacity 900ms cubic-bezier(0.22,1,0.36,1) 1100ms;}
+.prod-circle{position:absolute;inset:-14% -6%;width:112%;height:128%;pointer-events:none;z-index:3;}
+.prod-circle path{fill:none;stroke:var(--amber);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 1300ms cubic-bezier(0.22,1,0.36,1) 700ms;}
+.stopper.is-in .stopper-h .l1,
+.stopper.is-in .stopper-h .l2{opacity:1;transform:translateY(0);}
+.stopper.is-in .prod-ghost{opacity:1;}
+.stopper.is-in .prod-circle path{stroke-dashoffset:0;}
+@media (prefers-reduced-motion:reduce){
+  .stopper-h .l1,.stopper-h .l2{opacity:1;transform:none;transition:none;}
+  .prod-ghost{opacity:1;transition:none;}
+  .prod-circle path{stroke-dashoffset:0;transition:none;}
+}
+@media (max-width:900px){
+  .stopper{padding:64px 24px;}
+  .stopper::before,.stopper::after,.stopper .mark,.stopper .colophon{left:24px;right:24px;}
+  .stopper .mark{top:40px;}
+  .stopper .colophon{bottom:40px;flex-direction:column;gap:6px;}
+}
+@media (max-width:480px){
+  .stopper::before{top:32px;}.stopper::after{bottom:32px;}
+  .stopper .mark{top:24px;left:20px;font-size:9px;}
+  .stopper .colophon{left:20px;right:20px;bottom:24px;font-size:8px;}
+  .stopper-h{line-height:1.05;}
+}
+
 /* DARK SESSION BAND */
 .session-wrap{background:var(--dark);color:rgba(255,255,255,0.85);}
 .session{padding:96px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;}
@@ -270,6 +306,31 @@ h1.thesis .it{font-style:italic;color:var(--amber);}
     </div>
   </div>
 </section>
+
+<!-- SCROLL-STOPPER -->
+<section class="stopper" aria-label="The first law" id="stopper">
+  <div class="mark"><span class="dot"></span>The first law</div>
+  <h2 class="stopper-h">
+    <span class="l1">Most AI content inspires.</span>
+    <span class="l2">This <span class="prod-wrap"><span class="prod-ghost" aria-hidden="true">produces</span><span class="prod">produces</span><svg class="prod-circle" viewBox="0 0 320 160" aria-hidden="true" preserveAspectRatio="none"><path d="M 160 12 C 248 10 310 42 312 78 C 314 120 244 150 160 150 C 76 150 8 120 8 80 C 8 44 72 14 160 12 Z"/></svg></span>.</span>
+  </h2>
+  <div class="colophon">
+    <span>Law 01 · of 03</span>
+    <span>TVF · Composition № 01</span>
+  </div>
+</section>
+
+<script>
+(function(){
+  var s = document.getElementById('stopper');
+  if (!s) return;
+  if (!('IntersectionObserver' in window)) { s.classList.add('is-in'); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) { s.classList.add('is-in'); io.disconnect(); } });
+  }, { threshold: 0.35 });
+  io.observe(s);
+})();
+</script>
 
 <!-- DARK SESSION BAND -->
 <div class="session-wrap">
