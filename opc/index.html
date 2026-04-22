@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>One Person Company &middot; TheVibeFounder</title>
+<meta name="description" content="Zero to $1M revenue. Solo, with agents. On camera. Every step. Get the launch email.">
+<meta property="og:title" content="One Person Company &middot; TheVibeFounder">
+<meta property="og:description" content="Zero to $1M revenue. Solo, with agents. On camera. Every step.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F0EDE8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --dark:#0E0E0E;--cream:#F0EDE8;--amber:#F09A1A;
+  --ink:#1A1A1A;--mid:#3B3B3B;--soft:#666;--meta:#888;
+  --rule:rgba(10,10,10,0.08);
+  --rule-strong:rgba(10,10,10,0.14);
+  --surface:#FFFFFF;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'Geist Mono','Courier New',monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html,body{background:var(--cream);color:var(--ink);font-family:var(--mono);font-weight:400;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* MASTHEAD */
+.masthead{background:var(--cream);border-bottom:0.5px solid var(--rule);font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);}
+.masthead-inner{max-width:1440px;margin:0 auto;padding:10px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
+.masthead-l{text-align:left;}
+.masthead-c{display:flex;align-items:center;gap:10px;justify-self:center;color:var(--amber);letter-spacing:0.22em;}
+.masthead-c .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;animation:m-pulse 4s var(--ease) infinite;}
+@keyframes m-pulse{0%{box-shadow:0 0 0 0 rgba(240,154,26,0.4);}70%{box-shadow:0 0 0 6px rgba(240,154,26,0);}100%{box-shadow:0 0 0 0 rgba(240,154,26,0);}}
+.masthead-r{text-align:right;}
+.masthead-r .est{color:var(--soft);}
+@media (max-width:900px){.masthead-inner{padding:10px 24px;grid-template-columns:1fr auto;gap:12px;}.masthead-r{display:none;}}
+@media (max-width:480px){.masthead-inner{padding:8px 20px;font-size:9px;letter-spacing:0.14em;}.masthead-l{font-size:9px;}}
+@media (prefers-reduced-motion:reduce){.masthead-c .dot{animation:none;}}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:24px 48px;border-bottom:0.5px solid var(--rule);}
+.nav-l{font-family:var(--serif);font-size:22px;letter-spacing:-0.025em;line-height:1;color:var(--ink);}
+.nav-l .f{opacity:0.22;}
+.nav-r{font-size:10px;letter-spacing:0.18em;color:var(--soft);text-transform:uppercase;}
+.nav-r a{margin-left:24px;}
+.nav-r a:hover,.nav-r a.active{color:var(--amber);}
+
+/* HERO */
+.hero{max-width:1200px;margin:0 auto;padding:80px 48px 48px;}
+.eyebrow{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:40px;}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+h1.opc-h{font-family:var(--serif);font-size:clamp(56px,12vw,176px);line-height:0.88;letter-spacing:-0.035em;color:var(--ink);margin-bottom:32px;}
+h1.opc-h .it{font-style:italic;color:var(--amber);}
+.lede{font-family:var(--mono);font-size:clamp(15px,1.4vw,18px);line-height:1.65;color:var(--mid);max-width:52ch;margin-bottom:48px;}
+.lede strong{color:var(--ink);font-weight:500;}
+
+.hero-split{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;padding-top:28px;border-top:0.5px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);}
+.hero-split .r{color:var(--meta);text-align:right;}
+
+/* THE ARC */
+.arc{max-width:1200px;margin:0 auto;padding:80px 48px;}
+.arc-k{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:32px;}
+.arc-h{font-family:var(--serif);font-size:clamp(28px,4.5vw,44px);line-height:1.02;letter-spacing:-0.02em;color:var(--ink);margin-bottom:56px;max-width:22ch;}
+.arc-h .it{font-style:italic;color:var(--amber);}
+.arc-list{display:flex;flex-direction:column;}
+.arc-row{display:grid;grid-template-columns:80px 1fr auto;gap:32px;align-items:baseline;padding:28px 0;border-top:0.5px solid var(--rule);transition:padding 300ms var(--ease);}
+.arc-row:last-child{border-bottom:0.5px solid var(--rule);}
+.arc-row .n{font-family:var(--serif);font-size:40px;line-height:0.9;letter-spacing:-0.02em;color:var(--ink);}
+.arc-row .n .dim{color:var(--rule-strong);}
+.arc-row .title{font-family:var(--serif);font-size:clamp(22px,2.6vw,32px);letter-spacing:-0.015em;line-height:1.1;color:var(--ink);}
+.arc-row .desc{font-family:var(--mono);font-size:13px;color:var(--mid);line-height:1.7;margin-top:6px;max-width:56ch;}
+.arc-row .tag{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);white-space:nowrap;padding-top:8px;}
+.arc-row:last-child .title{font-style:italic;color:var(--amber);}
+.arc-row:last-child .tag{color:var(--amber);}
+
+/* EMAIL CAPTURE — dark band */
+.capture-wrap{background:var(--dark);color:rgba(255,255,255,0.85);}
+.capture{max-width:1200px;margin:0 auto;padding:96px 48px;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;}
+.capture-l .k{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.capture-l h2{font-family:var(--serif);font-size:clamp(32px,5vw,56px);line-height:1.02;letter-spacing:-0.025em;color:white;margin-bottom:24px;}
+.capture-l h2 .it{font-style:italic;color:var(--amber);}
+.capture-l p{font-family:var(--mono);font-size:14px;line-height:1.8;color:rgba(255,255,255,0.7);max-width:44ch;margin-bottom:0;}
+.capture-l .perks{margin-top:32px;display:flex;flex-direction:column;gap:12px;padding-top:32px;border-top:0.5px solid rgba(255,255,255,0.1);}
+.capture-l .perks li{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.7);line-height:1.6;list-style:none;padding-left:22px;position:relative;}
+.capture-l .perks li::before{content:'';position:absolute;left:0;top:0.55em;width:10px;height:0.5px;background:var(--amber);}
+
+.capture-form{display:flex;flex-direction:column;gap:16px;}
+.cf-group{display:flex;flex-direction:column;gap:8px;}
+.cf-label{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.cf-input{background:transparent;border:none;border-bottom:0.5px solid rgba(255,255,255,0.22);color:white;font-family:var(--mono);font-size:16px;padding:14px 0 12px;outline:none;transition:border-color 0.2s var(--ease);border-radius:0;-webkit-appearance:none;width:100%;}
+.cf-input:focus{border-color:var(--amber);}
+.cf-input::placeholder{color:rgba(255,255,255,0.28);}
+.cf-btn{margin-top:16px;background:var(--amber);color:#0E0E0E;border:none;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;padding:20px 24px;cursor:pointer;transition:opacity 0.2s var(--ease),gap 0.2s var(--ease);display:flex;align-items:center;justify-content:space-between;gap:16px;border-radius:0;width:100%;-webkit-appearance:none;}
+.cf-btn:hover{opacity:0.92;gap:20px;}
+.cf-btn[disabled]{opacity:0.55;cursor:wait;}
+.cf-btn .arr{font-family:var(--serif);font-size:16px;}
+.cf-status{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.6);line-height:1.6;min-height:1.4em;margin-top:4px;letter-spacing:0.02em;}
+.cf-status.ok{color:var(--amber);}
+.cf-status.err{color:#ff8a7a;}
+.cf-note{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:12px;}
+
+/* SUCCESS STATE */
+.capture-form.success .cf-group,
+.capture-form.success .cf-btn,
+.capture-form.success .cf-note{display:none;}
+.capture-form .success-panel{display:none;}
+.capture-form.success .success-panel{display:flex;flex-direction:column;gap:16px;padding:32px;border:0.5px solid rgba(240,154,26,0.5);background:rgba(240,154,26,0.04);}
+.capture-form .success-panel .sk{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;}
+.capture-form .success-panel .st{font-family:var(--serif);font-size:28px;line-height:1.05;letter-spacing:-0.015em;color:white;}
+.capture-form .success-panel .st .it{font-style:italic;color:var(--amber);}
+.capture-form .success-panel .sd{font-family:var(--mono);font-size:13px;line-height:1.7;color:rgba(255,255,255,0.65);}
+
+/* COLOPHON STRIP */
+.colophon{max-width:1200px;margin:0 auto;padding:64px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-bottom:0.5px solid var(--rule);}
+.col-item{display:flex;flex-direction:column;gap:6px;}
+.col-item .k{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--meta);}
+.col-item .v{font-family:var(--serif);font-size:18px;letter-spacing:-0.01em;color:var(--ink);}
+
+/* FOOTER */
+.foot{padding:40px 48px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);}
+.foot a:hover{color:var(--amber);}
+
+@media (max-width:900px){
+  .nav{padding:16px 24px;}
+  .nav-r a{margin-left:16px;}
+  .hero{padding:56px 24px 32px;}
+  h1.opc-h{font-size:clamp(48px,14vw,96px);}
+  .lede{margin-bottom:32px;}
+  .hero-split{grid-template-columns:1fr;gap:12px;}
+  .hero-split .r{text-align:left;}
+  .arc{padding:56px 24px;}
+  .arc-h{font-size:28px;margin-bottom:40px;}
+  .arc-row{grid-template-columns:52px 1fr;gap:20px;padding:24px 0;}
+  .arc-row .n{font-size:32px;}
+  .arc-row .tag{grid-column:2;padding-top:0;margin-top:6px;}
+  .arc-row .title{font-size:20px;}
+  .capture{padding:64px 24px;grid-template-columns:1fr;gap:48px;}
+  .capture-l h2{font-size:32px;}
+  .colophon{padding:48px 24px;grid-template-columns:1fr 1fr;gap:20px;}
+  .foot{padding:28px 24px;flex-direction:column;gap:12px;}
+}
+@media (max-width:480px){
+  .nav{padding:14px 20px;}
+  .nav-l{font-size:18px;}
+  .nav-r{font-size:9px;}
+  .nav-r a{margin-left:12px;}
+  .hero{padding:40px 20px 24px;}
+  h1.opc-h{font-size:56px;line-height:0.92;letter-spacing:-0.03em;}
+  .eyebrow{font-size:9px;margin-bottom:28px;}
+  .lede{font-size:15px;}
+  .arc{padding:40px 20px;}
+  .arc-h{font-size:24px;}
+  .arc-row .n{font-size:28px;}
+  .arc-row .title{font-size:18px;}
+  .arc-row .desc{font-size:12px;}
+  .capture{padding:48px 20px;gap:36px;}
+  .capture-l h2{font-size:28px;}
+  .cf-btn{padding:18px 20px;font-size:11px;}
+  .cf-input{font-size:16px;}  /* keep 16px on mobile to prevent iOS zoom */
+  .colophon{padding:36px 20px;}
+  .foot{padding:24px 20px;font-size:9px;}
+}
+
+/* MOTION */
+.hero .eyebrow, .hero h1.opc-h, .hero .lede, .hero .hero-split{
+  opacity:0;transform:translateY(6px);
+  transition:opacity 900ms var(--ease),transform 1100ms var(--ease);
+}
+.hero.is-in .eyebrow    {transition-delay:  0ms;}
+.hero.is-in h1.opc-h    {transition-delay:140ms;}
+.hero.is-in .lede       {transition-delay:340ms;}
+.hero.is-in .hero-split {transition-delay:540ms;}
+.hero.is-in .eyebrow,
+.hero.is-in h1.opc-h,
+.hero.is-in .lede,
+.hero.is-in .hero-split{opacity:1;transform:none;}
+.arc-row{opacity:0;transform:translateY(8px);transition:opacity 900ms var(--ease),transform 1100ms var(--ease);}
+.arc-list.is-in .arc-row:nth-child(1){transition-delay:  0ms;}
+.arc-list.is-in .arc-row:nth-child(2){transition-delay:100ms;}
+.arc-list.is-in .arc-row:nth-child(3){transition-delay:200ms;}
+.arc-list.is-in .arc-row:nth-child(4){transition-delay:300ms;}
+.arc-list.is-in .arc-row:nth-child(5){transition-delay:400ms;}
+.arc-list.is-in .arc-row{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .hero .eyebrow,.hero h1.opc-h,.hero .lede,.hero .hero-split,.arc-row{opacity:1;transform:none;transition:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead" id="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-l" id="mast-l">VOL 01 &middot; NO 04 &middot; &mdash;</div>
+    <div class="masthead-c" id="mast-c"><span class="dot"></span><span id="mast-state">Loading&hellip;</span></div>
+    <div class="masthead-r"><span>thevibefounder.com</span> &middot; <span class="est">EST. 2026</span></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="/" class="nav-l"><span class="f">The</span>Vibe<span class="f">Founder</span></a>
+  <div class="nav-r">
+    <a href="/skills/">Skills</a>
+    <a href="/sessions/">Sessions</a>
+    <a href="/opc/" class="active">OPC</a>
+    <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="eyebrow"><span class="dot"></span>OPC &middot; Series N&deg; 01 &middot; Launching soon</div>
+  <h1 class="opc-h">One Person<br><span class="it">Company.</span></h1>
+  <p class="lede">Zero to <strong>$1M revenue</strong>. Solo, with agents. On camera, every step &mdash; from the first idea to the first million. Mac Minis, OpenClaw, Facebook ads, landing pages, the actual P&amp;L &mdash; nothing edited out.</p>
+  <div class="hero-split">
+    <div>Drops when the first build lands</div>
+    <div class="r">2 fields &middot; 10 seconds &middot; no spam</div>
+  </div>
+</header>
+
+<!-- ARC -->
+<section class="arc">
+  <div class="arc-k"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;"></span>The arc</div>
+  <h2 class="arc-h">Five acts. One <span class="it">person</span>. Everything on camera.</h2>
+
+  <div class="arc-list" id="arc-list">
+    <div class="arc-row">
+      <div class="n">01</div>
+      <div>
+        <div class="title">Ideation</div>
+        <div class="desc">Why this business, why now, what I'm betting on. The quiet thinking before the code.</div>
+      </div>
+      <div class="tag">Episode N&deg; 01</div>
+    </div>
+
+    <div class="arc-row">
+      <div class="n">02</div>
+      <div>
+        <div class="title">The stack</div>
+        <div class="desc">Mac Minis as servers. OpenClaw for agents. Claude Code everywhere. The actual rack and the actual configs.</div>
+      </div>
+      <div class="tag">Infra</div>
+    </div>
+
+    <div class="arc-row">
+      <div class="n">03</div>
+      <div>
+        <div class="title">Build, in public</div>
+        <div class="desc">Product shipped live on Sunday sessions. Every prompt, every break, every redesign &mdash; not reconstructed, recorded.</div>
+      </div>
+      <div class="tag">MVP &rarr; v1</div>
+    </div>
+
+    <div class="arc-row">
+      <div class="n">04</div>
+      <div>
+        <div class="title">Distribution</div>
+        <div class="desc">Facebook ads. Landing pages. Growth loops. The exact creative, the exact CPA, the exact pivots when something breaks.</div>
+      </div>
+      <div class="tag">Growth</div>
+    </div>
+
+    <div class="arc-row">
+      <div class="n">05</div>
+      <div>
+        <div class="title">$1M.</div>
+        <div class="desc">The real number. Month it happens. What it took. What I'd do differently. Solo all the way.</div>
+      </div>
+      <div class="tag">Target</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<div class="capture-wrap">
+  <section class="capture">
+    <div class="capture-l">
+      <div class="k"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;"></span>Get in early</div>
+      <h2>I'll email you the <span class="it">day</span> episode 01 drops.</h2>
+      <p>Two fields. No spam. No "weekly digest." Just the first episode when it's ready, then one email per episode after. Unsubscribe anytime.</p>
+      <ul class="perks">
+        <li>Every episode, in your inbox first</li>
+        <li>Session notes, configs, real numbers</li>
+        <li>P&amp;L as it compounds, month over month</li>
+      </ul>
+    </div>
+
+    <form class="capture-form" id="opc-form" novalidate>
+      <div class="cf-group">
+        <label class="cf-label" for="opc-name">First name</label>
+        <input class="cf-input" id="opc-name" name="name" type="text" autocomplete="given-name" autocapitalize="words" spellcheck="false" required maxlength="60" placeholder="Ajay">
+      </div>
+      <div class="cf-group">
+        <label class="cf-label" for="opc-email">Email</label>
+        <input class="cf-input" id="opc-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" required maxlength="120" placeholder="you@domain.com">
+      </div>
+      <button type="submit" class="cf-btn" id="opc-submit">
+        <span>Join the list</span><span class="arr">&rarr;</span>
+      </button>
+      <div class="cf-status" id="opc-status" aria-live="polite"></div>
+      <div class="cf-note">No spam &middot; unsubscribe anytime &middot; city auto-filled from your connection</div>
+
+      <div class="success-panel" aria-hidden="true">
+        <div class="sk"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;"></span>You're in</div>
+        <div class="st">Watch your inbox, <span class="it" id="success-name">friend</span>.</div>
+        <div class="sd">Episode 01 drops first to this list. In the meantime, the build happens every Sunday &mdash; come hang.</div>
+      </div>
+    </form>
+  </section>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <div class="col-item"><div class="k">Series</div><div class="v">One Person Company</div></div>
+  <div class="col-item"><div class="k">Host</div><div class="v">Aj Yadav</div></div>
+  <div class="col-item"><div class="k">Format</div><div class="v">Live, on camera</div></div>
+  <div class="col-item"><div class="k">Target</div><div class="v">$1M revenue</div></div>
+</div>
+
+<footer class="foot">
+  <div>&copy; 2026 TheVibeFounder</div>
+  <div><a href="/">Home</a> &nbsp;&middot;&nbsp; <a href="/skills/">Skills</a> &nbsp;&middot;&nbsp; <a href="/sessions/">Sessions</a> &nbsp;&middot;&nbsp; <a href="/opc/">OPC</a> &nbsp;&middot;&nbsp; <a href="https://letter.thevibefounder.com">Letter</a></div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// MASTHEAD — shared with / and /sessions/
+// ═══════════════════════════════════════════════════════════════
+(function(){
+  var mast=document.getElementById('masthead'),left=document.getElementById('mast-l'),state=document.getElementById('mast-state');
+  if(!mast||!left||!state) return;
+  var META={volume:1,issue:4,session:29};
+  function pad(n){return String(n).padStart(2,'0');}
+  function dateline(){var d=new Date();var days=['SUN','MON','TUE','WED','THU','FRI','SAT'];var months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];return days[d.getDay()]+' \u00b7 '+months[d.getMonth()]+' '+d.getDate()+' \u00b7 '+d.getFullYear();}
+  function nextSessionStartUTC(now){var y=now.getUTCFullYear(),mo=now.getUTCMonth(),d=now.getUTCDate();var du=(7-now.getUTCDay())%7;var c=new Date(Date.UTC(y,mo,d+du,15,30,0));if(c.getTime()<=now.getTime())c=new Date(Date.UTC(y,mo,d+du+7,15,30,0));return c;}
+  function diffHuman(ms){if(ms<0)ms=0;var s=Math.floor(ms/1000),d=Math.floor(s/86400);s-=d*86400;var h=Math.floor(s/3600);s-=h*3600;var m=Math.floor(s/60);if(d>0)return d+'d '+h+'h '+pad(m)+'m';if(h>0)return h+'h '+pad(m)+'m';return pad(m)+'m';}
+  function isLiveNow(now){if(now.getUTCDay()!==0)return false;var s=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),15,30,0));return now>=s&&now<new Date(s.getTime()+7200000);}
+  function minutesLive(now){var s=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),15,30,0));return Math.max(0,Math.floor((now-s)/60000));}
+  function tick(){var now=new Date();left.textContent='VOL '+pad(META.volume)+' \u00b7 NO '+pad(META.issue)+' \u00b7 '+dateline();if(isLiveNow(now)){mast.classList.add('live');state.textContent='ON AIR \u00b7 SESSION '+META.session+' \u00b7 LIVE '+minutesLive(now)+'M IN';}else{mast.classList.remove('live');state.textContent='SESSION '+META.session+' \u00b7 NEXT IN '+diffHuman(nextSessionStartUTC(now)-now);}}
+  fetch('/today.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){if(typeof d.volume==='number')META.volume=d.volume;if(typeof d.issue==='number')META.issue=d.issue;if(typeof d.session==='number')META.session=d.session;}tick();setInterval(tick,30000);}).catch(function(){tick();setInterval(tick,30000);});
+})();
+
+// ═══════════════════════════════════════════════════════════════
+// MOTION — hero fade + arc stagger on scroll-in
+// ═══════════════════════════════════════════════════════════════
+(function(){
+  var hero=document.getElementById('hero');
+  if(hero) requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('is-in');});});
+  var arc=document.getElementById('arc-list');
+  if(!arc) return;
+  if(!('IntersectionObserver' in window)){arc.classList.add('is-in');return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){arc.classList.add('is-in');io.disconnect();}});},{threshold:0.15});
+  io.observe(arc);
+})();
+
+// ═══════════════════════════════════════════════════════════════
+// FORM — submit name + email to /api/opc-subscribe
+// ═══════════════════════════════════════════════════════════════
+(function(){
+  var form   = document.getElementById('opc-form');
+  var name   = document.getElementById('opc-name');
+  var email  = document.getElementById('opc-email');
+  var btn    = document.getElementById('opc-submit');
+  var status = document.getElementById('opc-status');
+  var successName = document.getElementById('success-name');
+  if (!form) return;
+  var RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    status.className = 'cf-status';
+    status.textContent = '';
+    var n = (name.value || '').trim();
+    var em = (email.value || '').trim();
+    if (!n || n.length < 1) { status.className='cf-status err'; status.textContent='Name please.'; name.focus(); return; }
+    if (!RE.test(em))       { status.className='cf-status err'; status.textContent='Double-check the email?'; email.focus(); return; }
+
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Submitting\u2026';
+    try {
+      var res = await fetch('/api/opc-subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: n, email: em, source: 'opc-landing' }),
+      });
+      if (!res.ok) throw new Error('failed');
+      var first = n.split(/\s+/)[0];
+      if (successName) successName.textContent = first;
+      form.classList.add('success');
+    } catch(err) {
+      status.className = 'cf-status err';
+      status.textContent = 'Could not submit. Try again or email ajay@thevibefounder.com.';
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Join the list';
+    }
+  });
+})();
+</script>
+</body>
+</html>
