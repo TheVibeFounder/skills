@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brand Guide &middot; v9.0 &middot; TheVibeFounder</title>
+<meta name="description" content="Public brand guide for TheVibeFounder. Logo, colour, typography, asset dimensions, spacing, co-brand, file naming. MIT — feel free to reference.">
+<meta property="og:title" content="TheVibeFounder &middot; Brand Guide v9.0">
+<meta property="og:description" content="Public brand guide. Logo, colour, typography, asset dimensions, spacing.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F0EDE8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --dark:#0E0E0E;--cream:#F0EDE8;--amber:#F09A1A;
+  --ink:#1A1A1A;--mid:#3B3B3B;--soft:#666;--meta:#888;
+  --rule:rgba(10,10,10,0.08);
+  --rule-strong:rgba(10,10,10,0.14);
+  --rule-dark:rgba(255,255,255,0.08);
+  --rule-dark-strong:rgba(255,255,255,0.14);
+  --surface:#FFFFFF;
+  --serif:'DM Serif Display',Georgia,serif;
+  --mono:'Geist Mono','Courier New',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth;scroll-padding-top:84px;}
+html,body{background:var(--cream);color:var(--ink);font-family:var(--mono);font-weight:400;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* MASTHEAD */
+.masthead{background:var(--cream);border-bottom:0.5px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--meta);position:sticky;top:0;z-index:30;}
+.masthead-inner{max-width:1440px;margin:0 auto;padding:10px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
+.masthead-l{text-align:left;}
+.masthead-c{display:flex;align-items:center;gap:10px;justify-self:center;color:var(--amber);letter-spacing:0.22em;}
+.masthead-c .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+.masthead-r{text-align:right;}
+.masthead-r .est{color:var(--soft);}
+@media (max-width:900px){.masthead-inner{padding:10px 24px;grid-template-columns:1fr auto;gap:12px;}.masthead-r{display:none;}}
+@media (max-width:480px){.masthead-inner{padding:8px 20px;font-size:10px;letter-spacing:0.12em;}}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:24px 48px;border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:40px;z-index:25;}
+.nav-l{font-family:var(--serif);font-size:22px;letter-spacing:-0.025em;line-height:1;color:var(--ink);}
+.nav-l .f{opacity:0.22;}
+.nav-r{font-size:12px;letter-spacing:0.14em;color:var(--soft);text-transform:uppercase;}
+.nav-r a{margin-left:24px;}
+.nav-r a:hover,.nav-r a.active{color:var(--amber);}
+@media (max-width:480px){
+  .nav{padding:16px 20px;top:36px;}
+  .nav-l{font-size:18px;}
+  .nav-r a{margin-left:14px;font-size:10px;}
+}
+
+/* LAYOUT */
+.shell{max-width:1440px;margin:0 auto;padding:48px;display:grid;grid-template-columns:260px 1fr;gap:64px;align-items:start;}
+@media (max-width:1100px){.shell{grid-template-columns:1fr;gap:32px;padding:32px 24px;}}
+@media (max-width:480px){.shell{padding:24px 20px;}}
+
+/* TOC */
+.toc{position:sticky;top:116px;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--mid);}
+.toc-k{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;padding-bottom:12px;border-bottom:0.5px solid var(--rule);}
+.toc ol{list-style:none;counter-reset:toc;display:flex;flex-direction:column;gap:3px;}
+.toc ol li{display:flex;gap:12px;padding:4px 0;}
+.toc ol li::before{counter-increment:toc;content:counter(toc,decimal-leading-zero);font-size:11px;color:var(--meta);letter-spacing:0.08em;padding-top:1px;}
+.toc a{color:var(--mid);transition:color 0.15s;}
+.toc a:hover{color:var(--amber);}
+@media (max-width:1100px){
+  .toc{position:static;padding:20px 0 24px;border-bottom:0.5px solid var(--rule);}
+  .toc ol{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;}
+}
+@media (max-width:480px){
+  .toc ol{grid-template-columns:1fr;}
+}
+
+/* ARTICLE */
+.article{display:flex;flex-direction:column;gap:80px;min-width:0;}
+section.s{scroll-margin-top:100px;}
+.s-k{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.s-k .num{color:var(--meta);font-family:var(--mono);}
+.s-k .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+.s-h{font-family:var(--serif);font-size:clamp(32px,5vw,56px);line-height:1.02;letter-spacing:-0.025em;color:var(--ink);margin-bottom:28px;}
+.s-h .it{font-style:italic;color:var(--amber);}
+.s-lede{font-family:var(--mono);font-size:15px;line-height:1.85;color:var(--mid);max-width:62ch;margin-bottom:40px;}
+
+/* Wordmark */
+.wm{font-family:var(--serif);letter-spacing:-0.025em;line-height:1;display:inline-block;}
+.wm .f{color:var(--ink);opacity:0.22;}
+.wm .r{color:var(--ink);}
+.wm-dark .f{color:white;opacity:0.22;}
+.wm-dark .r{color:white;}
+
+/* COVER */
+.cover{background:var(--dark);color:rgba(255,255,255,0.85);padding:96px 48px 80px;margin:-48px -48px 0;}
+.cover-inner{max-width:1440px;margin:0 auto;}
+.cover-eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;margin-bottom:48px;}
+.cover-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+.cover-h{font-family:var(--serif);font-size:clamp(56px,11vw,160px);line-height:0.88;letter-spacing:-0.03em;color:white;margin-bottom:48px;}
+.cover-h .f{opacity:0.22;}
+.cover-h .it{font-style:italic;color:var(--amber);}
+.cover-sub{font-family:var(--mono);font-size:14px;color:rgba(255,255,255,0.55);letter-spacing:0.04em;margin-bottom:40px;}
+.cover-rule{height:0.5px;background:var(--rule-dark);margin-bottom:32px;}
+.cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;font-family:var(--mono);font-size:11px;line-height:2;color:rgba(255,255,255,0.5);letter-spacing:0.08em;}
+.cover-grid .r{text-align:right;}
+@media (max-width:1100px){.cover{margin:-32px -24px 0;padding:64px 24px 48px;}}
+@media (max-width:480px){.cover{margin:-24px -20px 0;padding:48px 20px 40px;}.cover-grid{grid-template-columns:1fr;gap:16px;}.cover-grid .r{text-align:left;}}
+
+/* SECTION CONTAINERS */
+.surface{background:var(--surface);border:0.5px solid var(--rule);padding:32px;}
+.panel-dark{background:var(--dark);color:rgba(255,255,255,0.85);padding:48px;border:0.5px solid var(--dark);}
+
+/* Generic two-col */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+@media (max-width:900px){.two,.three,.four{grid-template-columns:1fr;gap:12px;}}
+
+/* COLOUR SWATCHES */
+.swatch{padding:24px;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/2;}
+.swatch .nm{font-size:14px;font-weight:500;margin-bottom:4px;}
+.swatch .hx{font-size:12px;letter-spacing:0.04em;}
+.swatch-dark{background:#0E0E0E;color:white;}
+.swatch-dark .hx{color:rgba(255,255,255,0.5);}
+.swatch-cream{background:#F0EDE8;color:#1A1A1A;border:0.5px solid var(--rule);}
+.swatch-cream .hx{color:#444;}
+.swatch-amber{background:#F09A1A;color:rgba(0,0,0,0.75);}
+.swatch-amber .hx{color:rgba(0,0,0,0.5);}
+.swatch-ink{background:#1A1A1A;color:rgba(255,255,255,0.9);}
+.swatch-ink .hx{color:rgba(255,255,255,0.5);}
+
+/* RATIO BAR */
+.ratio{display:flex;height:40px;gap:2px;margin-bottom:12px;}
+.ratio .seg{display:flex;align-items:center;padding:0 14px;font-size:11px;letter-spacing:0.1em;color:white;text-transform:uppercase;}
+.ratio .seg.base{background:#0E0E0E;color:rgba(255,255,255,0.6);}
+.ratio .seg.struct{background:rgba(10,10,10,0.08);color:#666;}
+.ratio .seg.signal{background:#F09A1A;color:rgba(0,0,0,0.6);font-weight:500;justify-content:center;}
+
+/* TYPE */
+.type-card{background:var(--surface);border:0.5px solid var(--rule);padding:28px;display:flex;flex-direction:column;gap:12px;}
+.type-card .k{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);}
+.type-face{font-size:clamp(28px,4vw,40px);line-height:1;color:var(--ink);}
+.type-face.serif{font-family:var(--serif);}
+.type-face.mono{font-family:var(--mono);font-weight:400;}
+.type-face.italic{font-style:italic;opacity:0.55;}
+.type-notes{font-size:12px;color:var(--soft);line-height:1.9;border-top:0.5px solid var(--rule);padding-top:14px;}
+
+.scale-row{display:flex;align-items:flex-end;justify-content:space-between;padding:14px 0;border-bottom:0.5px solid var(--rule);gap:20px;}
+.scale-row:last-child{border-bottom:none;}
+.scale-row .ex{max-width:70%;}
+.scale-row .note{font-size:11px;color:var(--soft);text-align:right;white-space:nowrap;letter-spacing:0.04em;}
+.scale-ex-display{font-family:var(--serif);font-size:clamp(32px,5vw,56px);color:var(--ink);letter-spacing:-0.02em;line-height:1;}
+.scale-ex-h1{font-family:var(--serif);font-size:clamp(26px,3.2vw,36px);color:var(--ink);letter-spacing:-0.02em;}
+.scale-ex-h2{font-family:var(--serif);font-size:22px;color:var(--ink);}
+.scale-ex-body{font-family:var(--mono);font-size:14px;color:var(--mid);line-height:1.9;}
+.scale-ex-label{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:var(--soft);text-transform:uppercase;}
+.scale-ex-system{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.22em;text-transform:uppercase;}
+
+/* Anatomy table + Laws */
+.anatomy{width:100%;border-collapse:collapse;font-size:13px;}
+.anatomy tr{border-bottom:0.5px solid var(--rule);}
+.anatomy tr:last-child{border-bottom:none;}
+.anatomy td{padding:12px 0;vertical-align:top;}
+.anatomy td:first-child{color:var(--soft);width:100px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding-right:16px;}
+.anatomy td:last-child{color:var(--mid);}
+.anatomy tr.emph td:first-child{color:var(--ink);font-weight:500;}
+.laws{font-size:13px;color:var(--mid);line-height:2;}
+.laws div{padding:10px 0;border-bottom:0.5px solid var(--rule);}
+.laws div:last-child{border-bottom:none;}
+
+/* DON'TS */
+.donts{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.dont{background:var(--surface);border:0.5px solid var(--rule);padding:20px;display:flex;flex-direction:column;gap:10px;}
+.dont .k{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(200,50,50,0.65);}
+.dont .note{font-size:11px;color:var(--soft);line-height:1.85;}
+.dont .wm{font-size:16px;}
+@media (max-width:900px){.donts{grid-template-columns:1fr 1fr;}}
+@media (max-width:480px){.donts{grid-template-columns:1fr;}}
+
+/* ICON SIZES */
+.icons{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;}
+.icon-cell{text-align:center;}
+.icon-sq{background:#0E0E0E;color:white;display:flex;align-items:center;justify-content:center;font-family:var(--serif);}
+.icon-sq.xl{width:80px;height:80px;border-radius:18px;font-size:36px;}
+.icon-sq.lg{width:48px;height:48px;border-radius:11px;font-size:22px;}
+.icon-sq.md{width:36px;height:36px;border-radius:8px;font-size:16px;}
+.icon-sq.sm{width:20px;height:20px;border-radius:4px;font-size:10px;}
+.icon-cap{font-size:10px;color:var(--soft);letter-spacing:0.12em;margin-top:8px;}
+
+/* TABLE */
+.spec-table{width:100%;border-collapse:collapse;font-size:13px;}
+.spec-table th{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--meta);text-align:left;padding:14px 16px;background:rgba(10,10,10,0.03);font-weight:400;}
+.spec-table td{padding:12px 16px;border-bottom:0.5px solid var(--rule);}
+.spec-table tr:last-child td{border-bottom:none;}
+.spec-table td:first-child{color:var(--ink);font-weight:500;}
+.spec-table td:not(:first-child){color:var(--soft);}
+
+/* SPACING */
+.spacing-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;}
+.space-cell{background:var(--surface);border:0.5px solid var(--rule);padding:16px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.space-bar{background:var(--ink);width:8px;}
+.space-cell.emph{background:rgba(240,154,26,0.07);border-color:rgba(240,154,26,0.22);}
+.space-cell.emph .space-bar{background:var(--amber);}
+.space-n{font-size:14px;font-weight:500;color:var(--ink);}
+.space-k{font-size:9px;color:var(--soft);letter-spacing:0.08em;}
+@media (max-width:900px){.spacing-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:480px){.spacing-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* CO-BRAND + FILENAMING */
+.cobrand{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.cb-card{background:var(--surface);border:0.5px solid var(--rule);padding:24px;}
+.cb-card .k{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;}
+.cb-card .k.bad{color:rgba(200,50,50,0.65);}
+.cb-card .ex{font-family:var(--mono);font-size:13px;letter-spacing:0.14em;color:var(--ink);margin-bottom:8px;}
+.cb-card .ex2{font-family:var(--mono);font-size:11px;color:var(--soft);letter-spacing:0.08em;}
+.cb-card .note{font-size:12px;color:var(--soft);line-height:1.85;border-top:0.5px solid var(--rule);padding-top:14px;margin-top:14px;}
+@media (max-width:900px){.cobrand{grid-template-columns:1fr;}}
+
+.filenaming{background:var(--surface);border:0.5px solid var(--rule);padding:28px;}
+.fn-pattern{font-family:var(--mono);font-size:14px;color:var(--ink);margin-bottom:16px;letter-spacing:0.04em;}
+.fn-examples{display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:12px;color:var(--soft);line-height:2;border-top:0.5px solid var(--rule);padding-top:16px;}
+@media (max-width:480px){.fn-examples{grid-template-columns:1fr;}}
+
+/* BACK */
+.back{background:var(--dark);color:rgba(255,255,255,0.85);padding:96px 48px;text-align:center;margin:80px -48px -48px;}
+@media (max-width:1100px){.back{margin:80px -24px -32px;padding:72px 24px;}}
+@media (max-width:480px){.back{margin:64px -20px -24px;padding:56px 20px;}}
+.back .k{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:32px;}
+.back .k .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;}
+.back-wm{font-family:var(--serif);font-size:clamp(32px,6vw,64px);letter-spacing:-0.025em;margin-bottom:16px;}
+.back-wm .f{color:white;opacity:0.22;}
+.back-wm .r{color:white;}
+.back-rule{width:48px;height:0.5px;background:rgba(255,255,255,0.2);margin:0 auto 24px;}
+.back-sub{font-size:14px;color:rgba(255,255,255,0.6);letter-spacing:0.05em;margin-bottom:32px;}
+.back-links{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.14em;line-height:2.2;text-transform:uppercase;}
+.back-links a:hover{color:var(--amber);}
+.back-stamp{margin-top:56px;font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.14em;}
+
+@media (max-width:480px){
+  .s-h{font-size:28px;}
+  .s-lede{font-size:14px;}
+  .surface,.panel-dark{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-l">Brand Guide &middot; v9.0 &middot; 2026</div>
+    <div class="masthead-c"><span class="dot"></span>System active</div>
+    <div class="masthead-r"><span>thevibefounder.com</span> &middot; <span class="est">EST. 2026</span></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="/" class="nav-l"><span class="f">The</span>Vibe<span class="f">Founder</span></a>
+  <div class="nav-r">
+    <a href="/skills/">Skills</a>
+    <a href="/sessions/">Sessions</a>
+    <a href="/opc/">OPC</a>
+    <a href="/brand/" class="active">Brand</a>
+    <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a>
+  </div>
+</nav>
+
+<main class="shell">
+
+<!-- TOC -->
+<aside class="toc" aria-label="Contents">
+  <div class="toc-k">Contents</div>
+  <ol>
+    <li><a href="#why">Why this exists</a></li>
+    <li><a href="#logo">Logo &middot; wordmark</a></li>
+    <li><a href="#sizes">Sizes + clearspace</a></li>
+    <li><a href="#dont">Never do this</a></li>
+    <li><a href="#icons">Favicon + app icons</a></li>
+    <li><a href="#colour">Colour palette</a></li>
+    <li><a href="#ratio">90 &middot; 8 &middot; 2 ratio</a></li>
+    <li><a href="#amber">Amber &mdash; signal only</a></li>
+    <li><a href="#type">Typography</a></li>
+    <li><a href="#scale">Type scale</a></li>
+    <li><a href="#assets">Asset dimensions</a></li>
+    <li><a href="#spacing">Spacing &middot; 8pt grid</a></li>
+    <li><a href="#cobrand">Co-brand</a></li>
+    <li><a href="#naming">File naming</a></li>
+  </ol>
+</aside>
+
+<article class="article">
+
+<!-- COVER -->
+<section class="s">
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-eyebrow"><span class="dot"></span>Brand guide &middot; v9.0 &middot; 2026</div>
+      <h1 class="cover-h"><span class="f">The</span><br><span class="r">Vibe</span><br><span class="f">Founder</span></h1>
+      <div class="cover-sub">Build with agents. See how it's done.</div>
+      <div class="cover-rule"></div>
+      <div class="cover-grid">
+        <div>Why this exists &middot; Logo system<br>Colour &middot; Typography &middot; Icons<br>Asset sizes &middot; Spacing &middot; File naming</div>
+        <div class="r">Forbes 30 Under 30<br>Co-founder, Simplified AI &mdash; 20M users<br>Khosla Ventures &middot; Craft Ventures</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 — WHY -->
+<section class="s" id="why">
+  <div class="s-k"><span class="num">01</span><span class="dot"></span>Why this exists</div>
+  <h2 class="s-h">Not inspired. <span class="it">Convinced</span><br>you can do it too.</h2>
+  <p class="s-lede">Most AI content talks about what's possible. You read it, save it, go back to your day exactly the same. This is different. A Forbes 30U30 founder who scaled Simplified AI to 20M users &mdash; now building live on camera, showing the tools, the configs, the decisions, the mistakes.</p>
+  <div class="panel-dark">
+    <div class="three" style="gap:24px;">
+      <div>
+        <div style="font-size:11px;letter-spacing:0.16em;color:var(--amber);margin-bottom:10px;">What it is</div>
+        <div style="font-size:13px;line-height:1.9;color:rgba(255,255,255,0.85);">A founder running real businesses with AI agents &mdash; building live so you can see exactly how it works.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:0.16em;color:var(--amber);margin-bottom:10px;">What it is not</div>
+        <div style="font-size:13px;line-height:1.9;color:rgba(255,255,255,0.85);">Not a course. Not a tutorial. Not "10 AI prompts." Real builds. Real numbers. Real process &mdash; including what broke.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:0.16em;color:var(--amber);margin-bottom:10px;">The promise</div>
+        <div style="font-size:13px;line-height:1.9;color:rgba(255,255,255,0.85);">Every Sunday, live on camera, unedited. Copy what applies. Leave the rest.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — LOGO WORDMARK -->
+<section class="s" id="logo">
+  <div class="s-k"><span class="num">02</span><span class="dot"></span>Logo &middot; Primary wordmark</div>
+  <h2 class="s-h">One unit. <span class="it">Three weights</span>. Non-negotiable.</h2>
+
+  <div style="background:var(--cream);border:0.5px solid var(--rule);padding:clamp(32px,6vw,64px);margin-bottom:3px;text-align:center;">
+    <div class="wm" style="font-size:clamp(36px,8vw,80px);"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div>
+  </div>
+  <div style="background:var(--dark);padding:clamp(32px,6vw,64px);margin-bottom:40px;text-align:center;">
+    <div class="wm wm-dark" style="font-size:clamp(36px,8vw,80px);"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div>
+  </div>
+
+  <div class="two">
+    <div class="surface">
+      <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;">Anatomy</div>
+      <table class="anatomy">
+        <tr><td>The</td><td>DM Serif Display &middot; 22% opacity &middot; recedes</td></tr>
+        <tr class="emph"><td>Vibe</td><td>DM Serif Display &middot; 100% &middot; the only signal</td></tr>
+        <tr><td>Founder</td><td>DM Serif Display &middot; 22% opacity &middot; recedes</td></tr>
+        <tr><td>Tagline</td><td>Geist Mono 400 &middot; 11px &middot; optional below 160px</td></tr>
+      </table>
+    </div>
+    <div class="surface">
+      <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;">Laws</div>
+      <div class="laws">
+        <div>Vibe is always full opacity. Non-negotiable.</div>
+        <div>The + Founder at 22%. They frame. They don't compete.</div>
+        <div>No spaces. TheVibeFounder is one unit.</div>
+        <div>Amber on the wordmark does not exist.</div>
+        <div>Distortion does not exist.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — SIZES + CLEARSPACE -->
+<section class="s" id="sizes">
+  <div class="s-k"><span class="num">03</span><span class="dot"></span>Sizes + Clearspace</div>
+  <h2 class="s-h">Minimum <span class="it">16px</span>. Below that, the handle.</h2>
+  <div class="three" style="margin-bottom:16px;">
+    <div class="surface" style="text-align:center;"><div class="wm" style="font-size:56px;"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-top:14px;">XL &middot; 52px+ &middot; covers, hero</div></div>
+    <div class="surface" style="text-align:center;"><div class="wm" style="font-size:36px;"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-top:14px;">LG &middot; 34px &middot; section headers</div></div>
+    <div class="surface" style="text-align:center;"><div class="wm" style="font-size:22px;"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-top:14px;">MD &middot; 22px &middot; cards, banners</div></div>
+  </div>
+  <div class="three">
+    <div class="surface" style="text-align:center;"><div class="wm" style="font-size:16px;"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-top:14px;">SM &middot; 16px &middot; minimum</div></div>
+    <div class="surface" style="text-align:center;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:13px;letter-spacing:0.12em;color:var(--soft);">@thevibefounder</div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-top:14px;">Handle &middot; below 16px this is the only option</div></div>
+    <div style="background:var(--dark);padding:24px;text-align:center;"><div class="wm wm-dark" style="font-size:22px;"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:14px;">MD &middot; dark surface</div></div>
+  </div>
+
+  <div style="margin-top:32px;padding:28px;background:var(--surface);border:0.5px solid var(--rule);">
+    <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;">Clearspace</div>
+    <div style="font-size:13px;color:var(--mid);line-height:2;">
+      Clearspace = cap-height of "T" on all four sides. No text, icon, or edge enters this zone.
+    </div>
+  </div>
+</section>
+
+<!-- 04 — NEVER DO THIS -->
+<section class="s" id="dont">
+  <div class="s-k"><span class="num">04</span><span class="dot"></span>Never do this</div>
+  <h2 class="s-h">The wordmark has <span class="it">one job</span>. Don't break it.</h2>
+  <div class="donts">
+    <div class="dont"><div class="k">&times; Amber fill</div><div class="wm" style="color:var(--amber);">TheVibeFounder</div><div class="note">Amber on the wordmark doesn't exist. It destroys the signal function.</div></div>
+    <div class="dont"><div class="k">&times; Equal weight</div><div class="wm" style="color:var(--ink);">TheVibeFounder</div><div class="note">The and Founder recede. Always. 22% opacity is not optional.</div></div>
+    <div class="dont"><div class="k">&times; Distort</div><div class="wm" style="transform:scaleX(1.5);transform-origin:left;display:inline-block;"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div><div class="note">Distortion doesn't exist. Scale uniformly or not at all.</div></div>
+    <div class="dont"><div class="k">&times; Below minimum</div><div class="wm" style="font-size:12px;"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div><div class="note">Below 16px the serifs break. Use the handle. Not the wordmark.</div></div>
+  </div>
+</section>
+
+<!-- 05 — ICONS -->
+<section class="s" id="icons">
+  <div class="s-k"><span class="num">05</span><span class="dot"></span>Favicon + app icons</div>
+  <h2 class="s-h">The mark is <span class="it">V</span>. On dark. Always.</h2>
+  <div class="two" style="margin-bottom:32px;">
+    <div class="icons">
+      <div class="icon-cell"><div class="icon-sq xl">V</div><div class="icon-cap">1024px</div></div>
+      <div class="icon-cell"><div class="icon-sq lg">V</div><div class="icon-cap">192px</div></div>
+      <div class="icon-cell"><div class="icon-sq md">V</div><div class="icon-cap">32px</div></div>
+      <div class="icon-cell"><div class="icon-sq sm">V</div><div class="icon-cap">16px</div></div>
+    </div>
+    <div class="surface">
+      <div class="laws">
+        <div>Mark is <strong style="color:var(--ink);">V</strong> &mdash; DM Serif Display, white, full opacity.</div>
+        <div>Background is always <strong style="color:var(--ink);">#0E0E0E</strong>. Not cream. Not amber.</div>
+        <div>Corner radius follows platform spec.</div>
+        <div>Below 16px: pixel V, no serifs.</div>
+      </div>
+    </div>
+  </div>
+  <div class="two">
+    <div>
+      <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;background:rgba(10,10,10,0.04);padding:12px 16px;color:var(--soft);">Web + Browser</div>
+      <table class="spec-table">
+        <tr><td>favicon.ico</td><td>16 &middot; 32 &middot; 48px bundle</td></tr>
+        <tr><td>favicon-32.png</td><td>32 &times; 32px</td></tr>
+        <tr><td>apple-touch.png</td><td>180 &times; 180px</td></tr>
+        <tr><td>og-image.png</td><td>1200 &times; 630px</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;background:rgba(10,10,10,0.04);padding:12px 16px;color:var(--soft);">App + Platform</div>
+      <table class="spec-table">
+        <tr><td>icon-1024.png</td><td>1024 &times; 1024px</td></tr>
+        <tr><td>icon-512.png</td><td>512 &times; 512px</td></tr>
+        <tr><td>icon-192.png</td><td>192 &times; 192px</td></tr>
+        <tr><td>profile.png</td><td>400 &times; 400px</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — COLOUR -->
+<section class="s" id="colour">
+  <div class="s-k"><span class="num">06</span><span class="dot"></span>Colour palette</div>
+  <h2 class="s-h">Four tokens. <span class="it">That's the whole system.</span></h2>
+  <div class="four">
+    <div class="swatch swatch-dark"><div class="nm">Dark</div><div class="hx">#0E0E0E &middot; 14 14 14</div></div>
+    <div class="swatch swatch-cream"><div class="nm">Cream</div><div class="hx">#F0EDE8 &middot; 240 237 232</div></div>
+    <div class="swatch swatch-amber"><div class="nm">Amber</div><div class="hx">#F09A1A &middot; 240 154 26</div></div>
+    <div class="swatch swatch-ink"><div class="nm">Ink</div><div class="hx">#1A1A1A &middot; 26 26 26</div></div>
+  </div>
+  <div class="four" style="margin-top:3px;">
+    <div class="surface" style="font-size:12px;color:var(--soft);line-height:1.9;padding:14px 16px;">Primary bg &middot; session covers &middot; authority moments</div>
+    <div class="surface" style="font-size:12px;color:var(--soft);line-height:1.9;padding:14px 16px;">Editorial bg &middot; carousels &middot; Substack</div>
+    <div class="surface" style="font-size:12px;color:var(--soft);line-height:1.9;padding:14px 16px;">Signal only &middot; once per composition</div>
+    <div class="surface" style="font-size:12px;color:var(--soft);line-height:1.9;padding:14px 16px;">Surface &middot; cards &middot; inner bg</div>
+  </div>
+</section>
+
+<!-- 07 — RATIO -->
+<section class="s" id="ratio">
+  <div class="s-k"><span class="num">07</span><span class="dot"></span>90 &middot; 8 &middot; 2 ratio</div>
+  <h2 class="s-h">Base. Structure. <span class="it">Signal.</span></h2>
+  <div class="ratio">
+    <div class="seg base" style="flex:90;">Dark + Cream &middot; 90%</div>
+    <div class="seg struct" style="flex:8;">8%</div>
+    <div class="seg signal" style="flex:2;">2%</div>
+  </div>
+  <p class="s-lede" style="margin-bottom:0;">Break this ratio and the brand collapses into noise.</p>
+</section>
+
+<!-- 08 — AMBER RULES -->
+<section class="s" id="amber">
+  <div class="s-k"><span class="num">08</span><span class="dot"></span>Amber &mdash; signal only</div>
+  <h2 class="s-h">One dominant amber <span class="it">per frame</span>.</h2>
+  <div class="two">
+    <div class="surface" style="background:rgba(240,154,26,0.06);border-color:rgba(240,154,26,0.22);">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;">Amber fires at &mdash; and only at</div>
+      <div class="laws" style="color:var(--mid);">
+        <div>System status dot &bull;</div>
+        <div>CTA button / link</div>
+        <div>Receipt border-left</div>
+        <div>Active step number</div>
+        <div>Section tag on dark bg</div>
+        <div>Eyebrow line prefix</div>
+      </div>
+    </div>
+    <div class="surface">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;">These do not exist</div>
+      <div class="laws">
+        <div>Large fills or backgrounds</div>
+        <div>Text on cream (contrast 2.1:1 &mdash; fails AA)</div>
+        <div>Decorative borders or underlines</div>
+        <div>Amber twice in one composition</div>
+        <div>Body text at any size</div>
+        <div>Image overlays</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — TYPOGRAPHY -->
+<section class="s" id="type">
+  <div class="s-k"><span class="num">09</span><span class="dot"></span>Typography</div>
+  <h2 class="s-h">Serif is <span class="it">the human</span>. Mono is the machine.</h2>
+  <div class="two">
+    <div class="type-card">
+      <div class="k">Human layer &middot; Serif</div>
+      <div class="type-face serif">DM Serif Display</div>
+      <div class="type-face serif italic">Italic variant</div>
+      <div class="type-notes">Headlines &middot; wordmark &middot; posters. Nothing else.<br>Regular &middot; Italic only.<br>fonts.google.com &middot; Free OFL</div>
+    </div>
+    <div class="type-card">
+      <div class="k">Machine layer &middot; Mono</div>
+      <div class="type-face mono">Geist Mono</div>
+      <div class="type-face mono" style="font-weight:300;opacity:0.45;font-size:18px;">Light 300</div>
+      <div class="type-notes">Everything else. Body &middot; labels &middot; receipts &middot; UI.<br>300 &middot; 400 &middot; 500 only.<br>vercel.com/font &middot; Free</div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 — TYPE SCALE -->
+<section class="s" id="scale">
+  <div class="s-k"><span class="num">10</span><span class="dot"></span>Type scale</div>
+  <h2 class="s-h">Eight sizes. <span class="it">Everything</span> snaps.</h2>
+  <div class="surface">
+    <div class="scale-row"><div class="ex scale-ex-display">Display</div><div class="note">DM Serif &middot; 56px &middot; hero covers, posters</div></div>
+    <div class="scale-row"><div class="ex scale-ex-h1">Section heading</div><div class="note">DM Serif &middot; 36px &middot; section openers</div></div>
+    <div class="scale-row"><div class="ex scale-ex-h2">Card heading</div><div class="note">DM Serif &middot; 22px &middot; cards, banners</div></div>
+    <div class="scale-row"><div class="ex scale-ex-body">Body copy. Max 60 chars per line.</div><div class="note">Geist Mono &middot; 14px &middot; body</div></div>
+    <div class="scale-row"><div class="ex scale-ex-label">Label &middot; metadata &middot; captions</div><div class="note">Geist Mono &middot; 11&ndash;12px &middot; labels</div></div>
+    <div class="scale-row"><div class="ex scale-ex-system">&bull; SYSTEM ACTIVE &middot; SESSION 29</div><div class="note">Geist Mono &middot; 10px &middot; system status</div></div>
+  </div>
+</section>
+
+<!-- 11 — ASSETS -->
+<section class="s" id="assets">
+  <div class="s-k"><span class="num">11</span><span class="dot"></span>Asset dimensions</div>
+  <h2 class="s-h">Every surface. <span class="it">Known sizes.</span></h2>
+  <div class="two">
+    <div>
+      <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;background:rgba(10,10,10,0.04);padding:12px 16px;color:var(--soft);">Instagram</div>
+      <table class="spec-table">
+        <tr><td>Square</td><td>1080 &times; 1080</td><td>Feed &middot; WhatsApp</td></tr>
+        <tr><td>Portrait 4:5</td><td>1080 &times; 1350</td><td>Primary feed</td></tr>
+        <tr><td>Story / Reel</td><td>1080 &times; 1920</td><td>9:16 vertical</td></tr>
+        <tr><td>Profile</td><td>400 &times; 400</td><td>Icon mark only</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;background:rgba(10,10,10,0.04);padding:12px 16px;color:var(--soft);">Build Live sessions</div>
+      <table class="spec-table">
+        <tr><td>Session square</td><td>1080 &times; 1080</td><td>IG &middot; WhatsApp</td></tr>
+        <tr><td>Session portrait</td><td>1080 &times; 1350</td><td>Hook slide</td></tr>
+        <tr><td>Luma banner</td><td>1910 &times; 1005</td><td>1.91:1 event</td></tr>
+        <tr><td>Zoom / stream</td><td>1920 &times; 1080</td><td>16:9 bg</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="two" style="margin-top:3px;">
+    <div>
+      <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;background:rgba(10,10,10,0.04);padding:12px 16px;color:var(--soft);">Carousel</div>
+      <table class="spec-table">
+        <tr><td>Hook slide</td><td>1080 &times; 1350</td><td>Dark &middot; amber signal</td></tr>
+        <tr><td>Body slides</td><td>1080 &times; 1350</td><td>Cream &middot; proof</td></tr>
+        <tr><td>CTA slide</td><td>1080 &times; 1350</td><td>Dark &middot; amber CTA</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;background:rgba(10,10,10,0.04);padding:12px 16px;color:var(--soft);">Web + Social</div>
+      <table class="spec-table">
+        <tr><td>OG image</td><td>1200 &times; 630</td><td>Link preview</td></tr>
+        <tr><td>Twitter header</td><td>1500 &times; 500</td><td>3:1 ratio</td></tr>
+        <tr><td>App icon</td><td>1024 &times; 1024</td><td>App Store</td></tr>
+        <tr><td>Favicon</td><td>16 &middot; 32 &middot; 48</td><td>.ico bundle</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 12 — SPACING -->
+<section class="s" id="spacing">
+  <div class="s-k"><span class="num">12</span><span class="dot"></span>Spacing &middot; 8pt grid</div>
+  <h2 class="s-h">Eight. Sixteen. Twenty-four. <span class="it">Nothing else.</span></h2>
+  <div class="spacing-grid">
+    <div class="space-cell"><div class="space-bar" style="height:8px;"></div><div class="space-n">8</div><div class="space-k">Component</div></div>
+    <div class="space-cell"><div class="space-bar" style="height:16px;"></div><div class="space-n">16</div><div class="space-k">Inner pad</div></div>
+    <div class="space-cell"><div class="space-bar" style="height:24px;"></div><div class="space-n">24</div><div class="space-k">Card pad</div></div>
+    <div class="space-cell"><div class="space-bar" style="height:32px;"></div><div class="space-n">32</div><div class="space-k">Section gap</div></div>
+    <div class="space-cell emph"><div class="space-bar" style="height:48px;"></div><div class="space-n">48</div><div class="space-k">Page pad</div></div>
+    <div class="space-cell"><div class="space-bar" style="height:64px;"></div><div class="space-n">64</div><div class="space-k">Hero space</div></div>
+  </div>
+  <div class="surface" style="margin-top:16px;">
+    <div class="two" style="gap:24px;font-size:12px;line-height:1.95;">
+      <div style="color:var(--mid);">
+        <div>+ Layout spacing uses the 8pt scale. Optical micro-adjustments in typography only.</div>
+        <div>+ Page padding is always 48px. Every page.</div>
+        <div>+ Logo clearspace = cap-height of "T" on all sides.</div>
+      </div>
+      <div style="color:var(--soft);">
+        <div>&times; Arbitrary values (22px, 28px, 40px) do not exist.</div>
+        <div>&times; Optical micro-adjustments inside typography are allowed.</div>
+        <div>&times; Padding as visual separator does not exist. Use 0.5px rule lines.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 — CO-BRAND -->
+<section class="s" id="cobrand">
+  <div class="s-k"><span class="num">13</span><span class="dot"></span>Co-brand</div>
+  <h2 class="s-h">Partner left. TVF right. <span class="it">Separator = x.</span></h2>
+  <div class="cobrand">
+    <div class="cb-card">
+      <div class="k">Correct</div>
+      <div class="ex">OTTO x THEVIBEFOUNDER</div>
+      <div class="ex2">BROUGHT TO YOU BY OTTO x THEVIBEFOUNDER</div>
+      <div class="note">Partner left &middot; TVF right &middot; separator = x &middot; mono only &middot; no logos.</div>
+    </div>
+    <div class="cb-card">
+      <div class="k bad">Does not exist</div>
+      <div style="font-family:var(--serif);font-size:18px;color:var(--ink);margin-bottom:8px;">Otto x TheVibeFounder</div>
+      <div class="ex2">OTTO + THEVIBEFOUNDER &middot; OTTO &amp; THEVIBEFOUNDER</div>
+      <div class="note">Serif in co-brand. Mixed case. + or &amp; separator.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 — FILE NAMING -->
+<section class="s" id="naming">
+  <div class="s-k"><span class="num">14</span><span class="dot"></span>File naming</div>
+  <h2 class="s-h">Predictable names. <span class="it">Findable files.</span></h2>
+  <div class="filenaming">
+    <div class="fn-pattern">tvf-[asset]-[variant]-[descriptor].[ext]</div>
+    <div class="fn-examples">
+      <div>tvf-logo-dark.svg<br>tvf-logo-cream.svg<br>tvf-icon-1024.png<br>tvf-icon-192.png<br>tvf-favicon-32.png</div>
+      <div>tvf-session-29-sq.png<br>tvf-session-29-luma.png<br>tvf-session-29-zoom.png<br>tvf-banner-twitter.png<br>tvf-og-image.png</div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK COVER -->
+<section class="s">
+  <div class="back">
+    <div class="k"><span class="dot"></span>System active</div>
+    <div class="back-wm"><span class="f">The</span><span class="r">Vibe</span><span class="f">Founder</span></div>
+    <div class="back-rule"></div>
+    <div class="back-sub">Build with agents. See how it's done.</div>
+    <div class="back-links">
+      <a href="https://instagram.com/thevibefounder" target="_blank" rel="noopener">@thevibefounder</a> &middot; <a href="/">thevibefounder.com</a><br>
+      <a href="https://letter.thevibefounder.com" target="_blank" rel="noopener">Letter</a> &middot; <a href="/skills/">Skills</a> &middot; <a href="/sessions/">Sessions</a> &middot; <a href="/opc/">OPC</a>
+    </div>
+    <div class="back-stamp">Brand Guide v9.0 &middot; 2026</div>
+  </div>
+</section>
+
+</article>
+</main>
+
+</body>
+</html>
